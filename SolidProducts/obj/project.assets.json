@@ -4616,24 +4616,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\jpesoa\\.nuget\\packages\\": {},
+    "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\source\\repos\\SolidProducts\\SolidProducts\\SolidProducts.csproj",
+      "projectUniqueName": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\SolidProducts\\SolidProducts.csproj",
       "projectName": "SolidProducts",
-      "projectPath": "C:\\Users\\Usuario\\source\\repos\\SolidProducts\\SolidProducts\\SolidProducts.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\source\\repos\\SolidProducts\\SolidProducts\\obj\\",
+      "projectPath": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\SolidProducts\\SolidProducts.csproj",
+      "packagesPath": "C:\\Users\\jpesoa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\SolidProducts\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\jpesoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4641,7 +4641,10 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/bsolbo/_packaging/bsol-libraries/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -4658,8 +4661,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -4721,7 +4723,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

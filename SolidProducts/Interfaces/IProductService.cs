@@ -6,5 +6,11 @@ namespace SolidProducts.Interfaces
     {
         Task<ProductResponseDto> CreateAsync(ProductRequestDto dto);
         Task<IEnumerable<ProductResponseDto>> GetAllAsync();
+
+        Task<IEnumerable<SupplierResponseDto>> GetAllSupplierAsync();
+
+        Task<IEnumerable<ManufacturerResponseDto>> GetAllManufacturersAsync();
+
+        Task<IEnumerable<ProductGroupsResponseDto>> GetAllProductGroupsAsync();
     }
 }

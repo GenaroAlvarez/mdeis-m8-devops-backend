@@ -34,5 +34,29 @@ namespace SolidProducts.Services
                .ProjectTo<ProductResponseDto>(_mapper.ConfigurationProvider)
                .ToListAsync();
         }
+
+        public async Task<IEnumerable<SupplierResponseDto>> GetAllSupplierAsync()
+        {
+            return await _unitOfWork.Suppliers
+               .Query()
+               .ProjectTo<SupplierResponseDto>(_mapper.ConfigurationProvider)
+               .ToListAsync();
+        }
+
+        public async Task<IEnumerable<ManufacturerResponseDto>> GetAllManufacturersAsync()
+        {
+            return await _unitOfWork.Manufacturers
+               .Query()
+               .ProjectTo<ManufacturerResponseDto>(_mapper.ConfigurationProvider)
+               .ToListAsync();
+        }
+
+        public async Task<IEnumerable<ProductGroupsResponseDto>> GetAllProductGroupsAsync()
+        {
+            return await _unitOfWork.ProductGroups
+               .Query()
+               .ProjectTo<ProductGroupsResponseDto>(_mapper.ConfigurationProvider)
+               .ToListAsync();
+        }
     }
 }
