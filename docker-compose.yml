@@ -22,7 +22,7 @@ services:
     ports:
       - "8080:80"
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=products;User=sa;Password=Password123!;TrustServerCertificate=True;Encrypt=False;
 
 volumes:
