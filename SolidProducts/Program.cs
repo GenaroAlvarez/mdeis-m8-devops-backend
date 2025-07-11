@@ -23,6 +23,9 @@ builder.Services.AddFluentValidationAutoValidation()
 // Dependency Injection
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ISupplierService, SupplierService>();
+builder.Services.AddScoped<IManufacturerService, ManufacturerService>();
+builder.Services.AddScoped<IProductGroupService, ProductGroupService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

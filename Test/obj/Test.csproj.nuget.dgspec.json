@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\SolidProducts\\SolidProducts.csproj": {}
+    "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\Test\\Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\SolidProducts\\SolidProducts.csproj": {
+    "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\Test\\Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\SolidProducts\\SolidProducts.csproj",
-        "projectName": "SolidProducts",
-        "projectPath": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\SolidProducts\\SolidProducts.csproj",
+        "projectUniqueName": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\Test\\Test.csproj",
+        "projectName": "Test",
+        "projectPath": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\Test\\Test.csproj",
         "packagesPath": "C:\\Users\\jpesoa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\SolidProducts\\obj\\",
+        "outputPath": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatización de Pruebas y Control de Calidad\\1\\Practicas\\Código\\SolidProducts\\Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages"
@@ -52,41 +52,21 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[12.0.1, )"
+              "version": "[17.8.0, )"
             },
-            "FluentValidation.AspNetCore": {
+            "coverlet.collector": {
               "target": "Package",
-              "version": "[11.3.1, )"
+              "version": "[6.0.0, )"
             },
-            "Microsoft.EntityFrameworkCore": {
+            "xunit": {
               "target": "Package",
-              "version": "[8.0.13, )"
+              "version": "[2.5.3, )"
             },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "xunit.runner.visualstudio": {
               "target": "Package",
-              "version": "[8.0.13, )"
-            },
-            "Microsoft.EntityFrameworkCore.Relational": {
-              "target": "Package",
-              "version": "[8.0.13, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[8.0.13, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.13, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.6.2, )"
+              "version": "[2.5.3, )"
             }
           },
           "imports": [
@@ -101,9 +81,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
