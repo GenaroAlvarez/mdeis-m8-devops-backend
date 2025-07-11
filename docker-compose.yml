@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: solidproducts-sqlserver
+    environment:
+      SA_PASSWORD: "Password123!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+  webapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solidproducts-webapi
+    depends_on:
+      - sqlserver
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=products;User=sa;Password=Password123!;TrustServerCertificate=True;Encrypt=False;
+
+volumes:
+  sql_data:
