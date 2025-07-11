@@ -3,10 +3,10 @@ using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using SolidProducts.Data;
 using SolidProducts.Interfaces;
-using SolidProducts.Mappings;
 using SolidProducts.Repositories;
 using SolidProducts.Services;
 using SolidProducts.Validators;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(opts =>
     opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 // AutoMapper
-builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 // FluentValidation
 builder.Services.AddFluentValidationAutoValidation()
