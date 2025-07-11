@@ -5,16 +5,16 @@ using SolidProducts.Interfaces;
 namespace SolidProducts.Controllers;
 
 [ApiController]
-[Route("api/v1/suplier")]
+[Route("api/v1/supliers")]
 public class SupplierController : ControllerBase
 {
-    private readonly IProductService _productService;
-    public SupplierController(IProductService svc) => _productService = svc;
+    private readonly ISupplierService _supplierService;
+    public SupplierController(ISupplierService supplierService) => _supplierService = supplierService;
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<SupplierResponseDto>>> GetAll()
     {
-        var suppliers = await _productService.GetAllSupplierAsync();
+        var suppliers = await _supplierService.GetAllAsync();
         return Ok(suppliers);
     }
 }

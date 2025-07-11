@@ -4,15 +4,17 @@ using SolidProducts.Interfaces;
 
 namespace SolidProducts.Controllers;
 
+[ApiController]
+[Route("api/v1/manufacturers")]
 public class ManufacturerController : ControllerBase
 {
-    private readonly IProductService _productService;
-    public ManufacturerController(IProductService svc) => _productService = svc;
+    private readonly IManufacturerService _manufacturerService;
+    public ManufacturerController(IManufacturerService manufacturerService) => _manufacturerService = manufacturerService;
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ManufacturerResponseDto>>> GetAll()
     {
-        var manufacturers = await _productService.GetAllManufacturersAsync();
+        var manufacturers = await _manufacturerService.GetAllAsync();
         return Ok(manufacturers);
     }
 }
