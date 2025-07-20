@@ -11,11 +11,11 @@ namespace SolidProducts.Controllers
         public ProductController(IProductService svc) => _productService = svc;
 
         [HttpPost]
-        public async Task<ActionResult<ProductResponseDto>> Create(ProductRequestDto productRequestDto)
-        {
-            var product = await _productService.CreateAsync(productRequestDto);
-            return Ok(product);
-        }
+        // public async Task<ActionResult<ProductResponseDto>> Create(ProductRequestDto productRequestDto)
+        // {
+        //     var product = await _productService.CreateAsync(productRequestDto);
+        //     return Ok(product);
+        // }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductResponseDto>>> GetAll()

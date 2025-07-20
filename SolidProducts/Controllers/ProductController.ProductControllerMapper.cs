@@ -8,11 +8,13 @@ public class ProductControllerMapper : Profile
 {
     public ProductControllerMapper()
     {
-        CreateMap<ProductRequestDto, Product>();
+        //CreateMap<ProductRequestDto, Product>();
 
         CreateMap<Product, ProductResponseDto>()
-            .ForMember(dest => dest.ProductGroupName, opt => opt.MapFrom(src => src.ProductGroup.Name))
-            .ForMember(dest => dest.ManufacturerName, opt => opt.MapFrom(src => src.Manufacturer.Name))
-            .ForMember(dest => dest.SupplierName, opt => opt.MapFrom(src => src.Supplier.Name));
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+            .ForMember(dest => dest.ProductGroup, opt => opt.MapFrom(src => src.ProductGroup));
     }
+    
 }

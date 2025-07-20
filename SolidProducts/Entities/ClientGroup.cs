@@ -1,9 +1,9 @@
-﻿namespace SolidProducts.Entities
+
+namespace SolidProducts.Entities
 {
-    public class ProductGroup : BaseEntity
+    public class ClientGroup : BaseEntity
     {
         public required string Name { get; set; }
         public decimal? Discount { get; set; }
-         
     }
 }

@@ -6,22 +6,22 @@ using SolidProducts.Interfaces;
 
 namespace SolidProducts.Services;
 
-public class ProductGroupService : IProductGroupService
+public class ClientService : IClientService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public ProductGroupService(IUnitOfWork uow, IMapper mapper)
+    public ClientService(IUnitOfWork uow, IMapper mapper)
     {
         _unitOfWork = uow;
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<ProductGroupsResponseDto>> GetAllAsync()
+    public async Task<IEnumerable<ClientResponseDto>> GetAllAsync()
     {
-        return await _unitOfWork.ProductGroups
+        return await _unitOfWork.Clients
            .Query()
-           .ProjectTo<ProductGroupsResponseDto>(_mapper.ConfigurationProvider)
+           .ProjectTo<ClientResponseDto>(_mapper.ConfigurationProvider)
            .ToListAsync();
     }
 }

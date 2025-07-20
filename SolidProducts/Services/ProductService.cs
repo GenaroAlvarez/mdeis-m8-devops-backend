@@ -18,14 +18,14 @@ namespace SolidProducts.Services
             _mapper = mapper;
         }
 
-        public async Task<ProductResponseDto> CreateAsync(ProductRequestDto productRequestDto)
-        {
-            var entity = _mapper.Map<Product>(productRequestDto);
-            var created = await _unitOfWork.Products.AddAsync(entity);
-            await _unitOfWork.CommitAsync();
-            var product = _mapper.Map<ProductResponseDto>(created);
-            return product;
-        }
+        // public async Task<ProductResponseDto> CreateAsync(ProductRequestDto productRequestDto)
+        // {
+        //     var entity = _mapper.Map<Product>(productRequestDto);
+        //     var created = await _unitOfWork.Products.AddAsync(entity);
+        //     await _unitOfWork.CommitAsync();
+        //     var product = _mapper.Map<ProductResponseDto>(created);
+        //     return product;
+        // }
 
         public async Task<IEnumerable<ProductResponseDto>> GetAllAsync()
         {
