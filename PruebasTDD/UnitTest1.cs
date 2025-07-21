@@ -13,7 +13,7 @@ namespace PruebasTDD
             ClientResponseDto clientResponseDto = new ClientResponseDto
             {
                 Id = 1,
-                Name = "Juan Pérez",
+                Name = "Juan PÃ©rez",
                 Code = "Cl-000001",
                 ClientGroup = new ClientGroup
                 {                    
@@ -53,7 +53,7 @@ namespace PruebasTDD
             ClientResponseDto clientResponseDto = new ClientResponseDto
             {
                 Id = 1,
-                Name = "Juan Pérez",
+                Name = "Juan PÃ©rez",
                 Code = "Cl-000001",
                 ClientGroup = new ClientGroup
                 {
@@ -68,7 +68,7 @@ namespace PruebasTDD
             {
                 Id = 1,
                 Code = "P-000002",
-                Name = "Cinturón de obrero",
+                Name = "CinturÃ³n de obrero",
                 Price = 500,
                 Brand = "BOSH",
                 ProductGroup = new ProductGroup
