@@ -1,9 +1,10 @@
 using SolidProducts.DTOs;
+using SolidProducts.Entities;
 
 namespace SolidProducts.Interfaces;
 
 public interface IInvoiceService
 {
-       Task CreateAsync(InvoiceRequestDto request);
+       Task<Invoice> CreateAsync(InvoiceRequestDto request);
     
 }

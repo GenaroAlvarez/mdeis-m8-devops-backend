@@ -27,6 +27,7 @@ builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IClientGroupService, ClientGroupService>();
 builder.Services.AddScoped<IProductCalculationService, ProductCalculationService>();
 builder.Services.AddScoped<IPaymentConditionService, PaymentConditionService>();
+builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -38,8 +39,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
-
+    // db.Database.Migrate();
 }
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

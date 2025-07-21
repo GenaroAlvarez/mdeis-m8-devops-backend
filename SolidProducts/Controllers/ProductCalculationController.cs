@@ -11,7 +11,7 @@ public class ProductCalculationController : ControllerBase
     private readonly IProductCalculationService _productCalculationService;
     public ProductCalculationController(IProductCalculationService productCalculationService) => _productCalculationService = productCalculationService;
 
-    [HttpGet]
+    [HttpPost]
     public async Task<ActionResult<IEnumerable<ProductCalculationResponseDto>>> GetCalculatedProduct(ProductCalculationRequestDto request)
     {
         var productCalculation = await _productCalculationService.GetCalculatedProductAsync(request);
