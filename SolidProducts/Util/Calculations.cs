@@ -10,16 +10,19 @@ public static class Calculations
             (clientResponseDto.ClientGroup.Discount ?? 0) +
             (productResponseDto.ProductGroup.Discount ?? 0);
 
+        var discountResponse = CalculationDiscountAmount(productResponseDto.Price, quantity, discountTotal);
+
         return new ProductCalculationResponseDto
         {
             Product = productResponseDto,
             Quantity = quantity,
-            Discount = discountTotal,
-            Subtotal = CalculationDiscount(productResponseDto.Price, quantity, discountTotal)
+            DiscountPercentage = discountTotal,
+            Discount = discountResponse.DiscountAmount,
+            Subtotal = discountResponse.Subtotal,
         };
     }
 
-    public static decimal CalculationDiscount(decimal unitPrice, int quantity, decimal discountValue)
+    public static DiscountResponseDto CalculationDiscountAmount(decimal unitPrice, int quantity, decimal discountValue)
     {
         if (quantity <= 0 || unitPrice < 0 || discountValue < 0)
             throw new ArgumentException("Los valores ingresados no son válidos.");
@@ -28,6 +31,10 @@ public static class Calculations
 
         decimal finalUnitPrice = unitPrice - discountPerUnit;
 
-        return finalUnitPrice * quantity;
+        return new DiscountResponseDto
+        {
+            DiscountAmount = discountPerUnit * quantity,
+            Subtotal = finalUnitPrice * quantity
+        };
     }
 }

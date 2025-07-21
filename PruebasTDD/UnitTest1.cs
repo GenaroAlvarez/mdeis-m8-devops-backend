@@ -39,8 +39,12 @@ namespace PruebasTDD
                 }
             };
 
-            var calculationResponse = Calculations.CalculationProduct(clientResponseDto, productResponseDto, 5);
-            Assert.AreEqual(11, calculationResponse.Discount);
+            const int quantity = 5;
+
+            var calculationResponse = Calculations.CalculationProduct(clientResponseDto, productResponseDto, quantity);
+            Assert.AreEqual(275, calculationResponse.Discount);
+            Assert.AreEqual(11, calculationResponse.DiscountPercentage);
+            Assert.AreEqual(2225, calculationResponse.Subtotal);
         }
 
         [TestMethod]
@@ -75,8 +79,12 @@ namespace PruebasTDD
                 }
             };
 
-            var calculationResponse = Calculations.CalculationProduct(clientResponseDto, productResponseDto, 5);
-            Assert.AreEqual(3, calculationResponse.Discount);
+            const int quantity = 5;
+
+            var calculationResponse = Calculations.CalculationProduct(clientResponseDto, productResponseDto, quantity);
+            Assert.AreEqual(75, calculationResponse.Discount);
+            Assert.AreEqual(3, calculationResponse.DiscountPercentage);
+            Assert.AreEqual(2425, calculationResponse.Subtotal);
         }
 
         [TestMethod]
@@ -111,8 +119,12 @@ namespace PruebasTDD
                 }
             };
 
-            var calculationResponse = Calculations.CalculationProduct(clientResponseDto, productResponseDto, 5);
-            Assert.AreEqual(8, calculationResponse.Discount);
+            const int quantity = 5;
+
+            var calculationResponse = Calculations.CalculationProduct(clientResponseDto, productResponseDto, quantity);
+            Assert.AreEqual(200, calculationResponse.Discount);
+            Assert.AreEqual(8, calculationResponse.DiscountPercentage);
+            Assert.AreEqual(2300, calculationResponse.Subtotal);
         }
     }
 }
