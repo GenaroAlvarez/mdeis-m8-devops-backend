@@ -14,7 +14,8 @@ public class ProductControllerMapper : Profile
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
             .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+            .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
             .ForMember(dest => dest.ProductGroup, opt => opt.MapFrom(src => src.ProductGroup));
     }
-    
+
 }

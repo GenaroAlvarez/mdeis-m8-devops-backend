@@ -11,6 +11,7 @@ public class ClientControllerMapper : Profile
         CreateMap<Client, ClientResponseDto>()
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-            .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code));
+            .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
+            .ForMember(dest => dest.ClientGroup, opt => opt.MapFrom(src => src.ClientGroup));
     }
 }

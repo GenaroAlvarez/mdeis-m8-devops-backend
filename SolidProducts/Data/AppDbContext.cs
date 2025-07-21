@@ -30,8 +30,6 @@ namespace SolidProducts.Data
             modelBuilder.Entity<InvoiceDetail>().HasQueryFilter(id => id.DeletedAt == null);
             modelBuilder.Entity<PaymentCondition>().HasQueryFilter(pc => pc.DeletedAt == null);
             modelBuilder.Entity<Warehouse>().HasQueryFilter(w => w.DeletedAt == null);
-
-            // Apply to all entities that inherit from BaseEntity
             foreach (var entityType in modelBuilder.Model.GetEntityTypes()
                 .Where(t => t.ClrType.IsSubclassOf(typeof(BaseEntity))))
             {
@@ -39,22 +37,19 @@ namespace SolidProducts.Data
                     .Property("CreatedAt")
                     .HasDefaultValueSql("GETUTCDATE()");
             }
-            // modelBuilder.Entity<Product>(b =>
-            //     {
-            //         b.Property(p => p.Price)
-            //         .HasPrecision(18, 2);
 
-            //         b.Property(p => p.Weight)
-            //         .HasPrecision(18, 3);
-            //     }
-            // );
+            modelBuilder.Entity<ClientGroup>()
+            .HasMany(e => e.Clients)
+            .WithOne(e => e.ClientGroup)
+            .HasForeignKey(e => e.ClientGroupId)
+            .IsRequired();
 
-            // modelBuilder.Entity<Product>()
-            //     .HasOne(p => p.Manufacturer).WithMany().HasForeignKey(p => p.ManufacturerId);
-
-            // modelBuilder.Entity<Product>()
-            //     .HasOne(p => p.Supplier).WithMany().HasForeignKey(p => p.SupplierId);
-
+            modelBuilder.Entity<ProductGroup>()
+            .HasMany(e => e.Products)
+            .WithOne(e => e.ProductGroup)
+            .HasForeignKey(e => e.ProductGroupId)
+            .IsRequired();
+            
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -7,6 +7,7 @@ namespace SolidProducts.DTOs
         public int Id { get; set; }
         public required string Code { get; set; }
         public required string Name { get; set; }
+        public required decimal Price { get; set; }
         public required ProductGroup ProductGroup { get; set; }
         public DateTime CreatedAt { get; set; }
     }

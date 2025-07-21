@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SolidProducts.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialClean : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,6 +18,7 @@ namespace SolidProducts.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -51,6 +52,8 @@ namespace SolidProducts.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Discount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -108,8 +111,8 @@ namespace SolidProducts.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ProductGroupId = table.Column<int>(type: "int", nullable: false),
-                    WarehouseId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -121,12 +124,6 @@ namespace SolidProducts.Migrations
                         name: "FK_Products_ProductGroups_ProductGroupId",
                         column: x => x.ProductGroupId,
                         principalTable: "ProductGroups",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Products_Warehouses_WarehouseId",
-                        column: x => x.WarehouseId,
-                        principalTable: "Warehouses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -175,6 +172,7 @@ namespace SolidProducts.Migrations
                     Subtotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     InvoiceId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
+                    WarehouseId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -192,6 +190,12 @@ namespace SolidProducts.Migrations
                         name: "FK_InvoiceDetails_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_InvoiceDetails_Warehouses_WarehouseId",
+                        column: x => x.WarehouseId,
+                        principalTable: "Warehouses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -212,6 +216,11 @@ namespace SolidProducts.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_InvoiceDetails_WarehouseId",
+                table: "InvoiceDetails",
+                column: "WarehouseId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Invoices_ClientId",
                 table: "Invoices",
                 column: "ClientId");
@@ -225,11 +234,6 @@ namespace SolidProducts.Migrations
                 name: "IX_Products_ProductGroupId",
                 table: "Products",
                 column: "ProductGroupId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_WarehouseId",
-                table: "Products",
-                column: "WarehouseId");
         }
 
         /// <inheritdoc />
@@ -245,6 +249,9 @@ namespace SolidProducts.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
+                name: "Warehouses");
+
+            migrationBuilder.DropTable(
                 name: "Clients");
 
             migrationBuilder.DropTable(
@@ -252,9 +259,6 @@ namespace SolidProducts.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProductGroups");
-
-            migrationBuilder.DropTable(
-                name: "Warehouses");
 
             migrationBuilder.DropTable(
                 name: "ClientGroups");

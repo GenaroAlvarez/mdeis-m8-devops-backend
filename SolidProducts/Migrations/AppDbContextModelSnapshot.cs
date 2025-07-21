@@ -67,6 +67,10 @@ namespace SolidProducts.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -171,11 +175,16 @@ namespace SolidProducts.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("WarehouseId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("InvoiceId");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("WarehouseId");
 
                     b.ToTable("InvoiceDetails");
                 });
@@ -232,20 +241,18 @@ namespace SolidProducts.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("ProductGroupId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("WarehouseId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProductGroupId");
-
-                    b.HasIndex("WarehouseId");
 
                     b.ToTable("Products");
                 });
@@ -258,6 +265,10 @@ namespace SolidProducts.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -265,6 +276,9 @@ namespace SolidProducts.Migrations
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<decimal?>("Discount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -309,7 +323,7 @@ namespace SolidProducts.Migrations
             modelBuilder.Entity("SolidProducts.Entities.Client", b =>
                 {
                     b.HasOne("SolidProducts.Entities.ClientGroup", "ClientGroup")
-                        .WithMany()
+                        .WithMany("Clients")
                         .HasForeignKey("ClientGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -350,33 +364,43 @@ namespace SolidProducts.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Invoice");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("SolidProducts.Entities.Product", b =>
-                {
-                    b.HasOne("SolidProducts.Entities.ProductGroup", "ProductGroup")
-                        .WithMany()
-                        .HasForeignKey("ProductGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SolidProducts.Entities.Warehouse", "Warehouse")
                         .WithMany()
                         .HasForeignKey("WarehouseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ProductGroup");
+                    b.Navigation("Invoice");
+
+                    b.Navigation("Product");
 
                     b.Navigation("Warehouse");
+                });
+
+            modelBuilder.Entity("SolidProducts.Entities.Product", b =>
+                {
+                    b.HasOne("SolidProducts.Entities.ProductGroup", "ProductGroup")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductGroup");
+                });
+
+            modelBuilder.Entity("SolidProducts.Entities.ClientGroup", b =>
+                {
+                    b.Navigation("Clients");
                 });
 
             modelBuilder.Entity("SolidProducts.Entities.Invoice", b =>
                 {
                     b.Navigation("Details");
+                });
+
+            modelBuilder.Entity("SolidProducts.Entities.ProductGroup", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,9 +1,13 @@
-﻿namespace SolidProducts.DTOs;
+﻿using SolidProducts.Entities;
+
+namespace SolidProducts.DTOs;
 
 public class ClientResponseDto
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Code { get; set; } = string.Empty;
+    public required int Id { get; set; }
+    public required string Name { get; set; } = string.Empty;
+    public required string Code { get; set; } = string.Empty;
+    public required ClientGroup ClientGroup { get; set; }
+    public DateTime CreatedAt { get; set; }
 
 }
