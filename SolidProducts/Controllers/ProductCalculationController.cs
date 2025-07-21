@@ -5,7 +5,7 @@ using SolidProducts.Interfaces;
 namespace SolidProducts.Controllers;
 
 [ApiController]
-[Route("api/v1/products")]
+[Route("api/v1/productCalculation")]
 public class ProductCalculationController : ControllerBase
 {
     private readonly IProductCalculationService _productCalculationService;
