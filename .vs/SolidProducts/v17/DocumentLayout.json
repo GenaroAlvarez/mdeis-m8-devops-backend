@@ -1,0 +1,206 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7C934173-AB41-483C-B238-8043C3071FA6}|PruebasTDD\\PruebasTDD.csproj|c:\\users\\jpesoa\\downloads\\soe - uagrm\\1 mdeisv2e5\\7 automatizaci\u00F3n de pruebas y control de calidad\\2\\practica\\codigo\\backend-ventas-tdd\\pruebastdd\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C934173-AB41-483C-B238-8043C3071FA6}|PruebasTDD\\PruebasTDD.csproj|solutionrelative:pruebastdd\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|c:\\users\\jpesoa\\downloads\\soe - uagrm\\1 mdeisv2e5\\7 automatizaci\u00F3n de pruebas y control de calidad\\2\\practica\\codigo\\backend-ventas-tdd\\solidproducts\\util\\calculations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|solutionrelative:solidproducts\\util\\calculations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|c:\\users\\jpesoa\\downloads\\soe - uagrm\\1 mdeisv2e5\\7 automatizaci\u00F3n de pruebas y control de calidad\\2\\practica\\codigo\\backend-ventas-tdd\\solidproducts\\services\\productcalculationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|solutionrelative:solidproducts\\services\\productcalculationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|c:\\users\\jpesoa\\downloads\\soe - uagrm\\1 mdeisv2e5\\7 automatizaci\u00F3n de pruebas y control de calidad\\2\\practica\\codigo\\backend-ventas-tdd\\solidproducts\\dtos\\productcalculationresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|solutionrelative:solidproducts\\dtos\\productcalculationresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|c:\\users\\jpesoa\\downloads\\soe - uagrm\\1 mdeisv2e5\\7 automatizaci\u00F3n de pruebas y control de calidad\\2\\practica\\codigo\\backend-ventas-tdd\\solidproducts\\dtos\\productresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|solutionrelative:solidproducts\\dtos\\productresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|c:\\users\\jpesoa\\downloads\\soe - uagrm\\1 mdeisv2e5\\7 automatizaci\u00F3n de pruebas y control de calidad\\2\\practica\\codigo\\backend-ventas-tdd\\solidproducts\\dtos\\clientresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|solutionrelative:solidproducts\\dtos\\clientresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|c:\\users\\jpesoa\\downloads\\soe - uagrm\\1 mdeisv2e5\\7 automatizaci\u00F3n de pruebas y control de calidad\\2\\practica\\codigo\\backend-ventas-tdd\\solidproducts\\entities\\clientgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|solutionrelative:solidproducts\\entities\\clientgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|c:\\users\\jpesoa\\downloads\\soe - uagrm\\1 mdeisv2e5\\7 automatizaci\u00F3n de pruebas y control de calidad\\2\\practica\\codigo\\backend-ventas-tdd\\solidproducts\\controllers\\productcalculationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|solutionrelative:solidproducts\\controllers\\productcalculationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|c:\\users\\jpesoa\\downloads\\soe - uagrm\\1 mdeisv2e5\\7 automatizaci\u00F3n de pruebas y control de calidad\\2\\practica\\codigo\\backend-ventas-tdd\\solidproducts\\dtos\\productcalculationrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{05FFCCAB-DB4E-404A-9352-BF021155FD5B}|SolidProducts\\SolidProducts.csproj|solutionrelative:solidproducts\\dtos\\productcalculationrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 809,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductCalculationController.cs",
+              "DocumentMoniker": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\Controllers\\ProductCalculationController.cs",
+              "RelativeDocumentMoniker": "SolidProducts\\Controllers\\ProductCalculationController.cs",
+              "ToolTip": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\Controllers\\ProductCalculationController.cs",
+              "RelativeToolTip": "SolidProducts\\Controllers\\ProductCalculationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T14:06:20.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductCalculationRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\DTOs\\ProductCalculationRequestDto.cs",
+              "RelativeDocumentMoniker": "SolidProducts\\DTOs\\ProductCalculationRequestDto.cs",
+              "ToolTip": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\DTOs\\ProductCalculationRequestDto.cs",
+              "RelativeToolTip": "SolidProducts\\DTOs\\ProductCalculationRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T14:12:32.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductCalculationResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\DTOs\\ProductCalculationResponseDto.cs",
+              "RelativeDocumentMoniker": "SolidProducts\\DTOs\\ProductCalculationResponseDto.cs",
+              "ToolTip": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\DTOs\\ProductCalculationResponseDto.cs",
+              "RelativeToolTip": "SolidProducts\\DTOs\\ProductCalculationResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T14:08:15.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\PruebasTDD\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "PruebasTDD\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\PruebasTDD\\UnitTest1.cs",
+              "RelativeToolTip": "PruebasTDD\\UnitTest1.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAUwGMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T14:58:22.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductCalculationService.cs",
+              "DocumentMoniker": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\Services\\ProductCalculationService.cs",
+              "RelativeDocumentMoniker": "SolidProducts\\Services\\ProductCalculationService.cs",
+              "ToolTip": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\Services\\ProductCalculationService.cs",
+              "RelativeToolTip": "SolidProducts\\Services\\ProductCalculationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T14:09:50.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Calculations.cs",
+              "DocumentMoniker": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\Util\\Calculations.cs",
+              "RelativeDocumentMoniker": "SolidProducts\\Util\\Calculations.cs",
+              "ToolTip": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\Util\\Calculations.cs",
+              "RelativeToolTip": "SolidProducts\\Util\\Calculations.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T15:19:25.432Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "5d4475f9-2706-4ca3-9f4e-2e8be073c64c",
+        "Display": 0,
+        "X": 766,
+        "Y": 454,
+        "Width": 1453,
+        "Height": 958,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ClientResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\DTOs\\ClientResponseDto.cs",
+              "RelativeDocumentMoniker": "SolidProducts\\DTOs\\ClientResponseDto.cs",
+              "ToolTip": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\DTOs\\ClientResponseDto.cs",
+              "RelativeToolTip": "SolidProducts\\DTOs\\ClientResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T15:11:16.423Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ClientGroup.cs",
+              "DocumentMoniker": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\Entities\\ClientGroup.cs",
+              "RelativeDocumentMoniker": "SolidProducts\\Entities\\ClientGroup.cs",
+              "ToolTip": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\Entities\\ClientGroup.cs",
+              "RelativeToolTip": "SolidProducts\\Entities\\ClientGroup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T15:09:15.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\DTOs\\ProductResponseDto.cs",
+              "RelativeDocumentMoniker": "SolidProducts\\DTOs\\ProductResponseDto.cs",
+              "ToolTip": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\SolidProducts\\DTOs\\ProductResponseDto.cs",
+              "RelativeToolTip": "SolidProducts\\DTOs\\ProductResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T15:11:49.176Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

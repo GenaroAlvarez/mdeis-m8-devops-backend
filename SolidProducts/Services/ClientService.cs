@@ -24,4 +24,13 @@ public class ClientService : IClientService
            .ProjectTo<ClientResponseDto>(_mapper.ConfigurationProvider)
            .ToListAsync();
     }
+
+    public async Task<ClientResponseDto> GetAsync(int id)
+    {
+        return await _unitOfWork.Clients
+           .Query()
+           .Where(x => x.Id == id)
+           .ProjectTo<ClientResponseDto>(_mapper.ConfigurationProvider)
+           .FirstAsync();
+    }
 }

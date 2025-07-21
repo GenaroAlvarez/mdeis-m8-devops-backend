@@ -5,4 +5,6 @@ namespace SolidProducts.Interfaces;
 public interface IClientService
 {
     Task<IEnumerable<ClientResponseDto>> GetAllAsync();
+
+    Task<ClientResponseDto> GetAsync(int id);
 }

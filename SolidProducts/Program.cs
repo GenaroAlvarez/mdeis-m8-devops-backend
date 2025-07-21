@@ -25,6 +25,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IClientGroupService, ClientGroupService>();
+builder.Services.AddScoped<IProductCalculationService, ProductCalculationService>();
 //builder.Services.AddScoped<IProductGroupService, ProductGroupService>();
 
 builder.Services.AddControllers();
