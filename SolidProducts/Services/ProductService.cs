@@ -34,5 +34,14 @@ namespace SolidProducts.Services
                .ProjectTo<ProductResponseDto>(_mapper.ConfigurationProvider)
                .ToListAsync();
         }
+
+        public async Task<ProductResponseDto> GetAsync(int id)
+        {
+            return await _unitOfWork.Products
+               .Query()
+               .Where(x => x.Id == id)
+               .ProjectTo<ProductResponseDto>(_mapper.ConfigurationProvider)
+               .FirstAsync();
+        }
     }
 }

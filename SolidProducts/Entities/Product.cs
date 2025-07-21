@@ -6,6 +6,7 @@ namespace SolidProducts.Entities
         public required string Name { get; set; }
         public required decimal Price { get; set; }
         public required int ProductGroupId { get; set; }
+        public required string Brand { get; set; }
         public ProductGroup ProductGroup { get; set; } = null!;
     }
 }
