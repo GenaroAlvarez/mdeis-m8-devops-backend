@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\jpesoa\\Downloads\\SOE - UAGRM\\1 MDEISV2E5\\7 Automatizaci\u00F3n de Pruebas y Control de Calidad\\2\\Practica\\Codigo\\backend-ventas-tdd\\",
+  "WorkspaceRootPath": "C:\\Users\\danie\\Desktop\\projects\\tdd_be\\",
   "Documents": [],
   "DocumentGroupContainers": [
     {
@@ -11,6 +11,10 @@
           "DockedWidth": 809,
           "SelectedChildIndex": -1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
