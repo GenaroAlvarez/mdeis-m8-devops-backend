@@ -36,4 +36,15 @@ public class InvoiceService(IUnitOfWork uow, IMapper mapper) : IInvoiceService
             throw;
         }
     }
+    
+    public async Task<IEnumerable<InvoiceResponseDto>> GetAllAsync()
+    {
+        return await _unitOfWork.Invoices.Query()
+            .Include(i => i.Client)
+            .Include(i => i.PaymentCondition)
+            .Include(i => i.Details)
+                .ThenInclude(d => d.Product)
+            .ProjectTo<InvoiceResponseDto>(_mapper.ConfigurationProvider)
+            .ToListAsync();
+    }
 }

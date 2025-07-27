@@ -14,12 +14,14 @@ namespace PruebasTDD
             {
                 Id = 1,
                 Name = "Juan Pérez",
-                Code = "Cl-000001",
-                ClientGroup = new ClientGroup
-                {                    
-                    Name = "Especialista",
-                    Code = "Cg-000001",
-                    Discount = 3,
+                Code = "C-000001",
+                DocumentNumber = 1234567,
+                Email = "juan.perez@gmail.com",
+                DocumentType = new DocumentType
+                {
+                    Id = 1,
+                    Name = "ABC",
+                    Code = "DOC-000001",
                 },
                 CreatedAt = DateTime.Now,
             };
@@ -30,13 +32,6 @@ namespace PruebasTDD
                 Code = "P-000001",
                 Name = "Taladro",
                 Price = 500,
-                Brand = "BOSH",
-                ProductGroup = new ProductGroup
-                {
-                    Name = "Herramientas",
-                    Code = "Gp-000001",
-                    Discount = 8
-                }
             };
 
             const int quantity = 5;
@@ -54,12 +49,14 @@ namespace PruebasTDD
             {
                 Id = 1,
                 Name = "Juan Pérez",
-                Code = "Cl-000001",
-                ClientGroup = new ClientGroup
+                Code = "C-000001",
+                DocumentNumber = 1234567,
+                Email = "juan.perez@gmail.com",
+                DocumentType = new DocumentType
                 {
-                    Name = "Especialista",
-                    Code = "Cg-000001",
-                    Discount = 3,
+                    Id = 1,
+                    Name = "BCD",
+                    Code = "DOC-000001",
                 },
                 CreatedAt = DateTime.Now,
             };
@@ -70,13 +67,6 @@ namespace PruebasTDD
                 Code = "P-000002",
                 Name = "Cinturón de obrero",
                 Price = 500,
-                Brand = "BOSH",
-                ProductGroup = new ProductGroup
-                {
-                    Name = "Accesorio",
-                    Code = "Gp-000002",
-                    Discount = 0
-                }
             };
 
             const int quantity = 5;
@@ -94,12 +84,14 @@ namespace PruebasTDD
             {
                 Id = 1,
                 Name = "Juan Carlos Chavez",
-                Code = "Cl-000002",
-                ClientGroup = new ClientGroup
+                Code = "C-000001",
+                DocumentNumber = 1234567,
+                Email = "juan.perez@gmail.com",
+                DocumentType = new DocumentType
                 {
-                    Name = "Regular",
-                    Code = "Cg-000002",
-                    Discount = 0,
+                    Id = 1,
+                    Name = "BCD",
+                    Code = "DOC-000001",
                 },
                 CreatedAt = DateTime.Now,
             };
@@ -110,13 +102,6 @@ namespace PruebasTDD
                 Code = "P-000001",
                 Name = "Taladro",
                 Price = 500,
-                Brand = "BOSH",
-                ProductGroup = new ProductGroup
-                {
-                    Name = "Herramientas",
-                    Code = "Gp-000001",
-                    Discount = 8
-                }
             };
 
             const int quantity = 5;

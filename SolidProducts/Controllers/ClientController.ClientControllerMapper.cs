@@ -12,6 +12,8 @@ public class ClientControllerMapper : Profile
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
             .ForMember(dest => dest.Code, opt => opt.MapFrom(src => src.Code))
-            .ForMember(dest => dest.ClientGroup, opt => opt.MapFrom(src => src.ClientGroup));
+            .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+            .ForMember(dest => dest.DocumentNumber, opt => opt.MapFrom(src => src.DocumentNumber))
+            .ForMember(dest => dest.DocumentType, opt => opt.MapFrom(src => src.DocumentType));
     }
 }

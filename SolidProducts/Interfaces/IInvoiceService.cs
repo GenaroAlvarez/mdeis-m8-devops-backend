@@ -5,6 +5,6 @@ namespace SolidProducts.Interfaces;
 
 public interface IInvoiceService
 {
-       Task<Invoice> CreateAsync(InvoiceRequestDto request);
-    
+    Task<Invoice> CreateAsync(InvoiceRequestDto request);
+    Task<IEnumerable<InvoiceResponseDto>> GetAllAsync();
 }

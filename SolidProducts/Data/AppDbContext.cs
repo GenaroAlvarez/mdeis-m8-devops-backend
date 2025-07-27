@@ -17,6 +17,7 @@ namespace SolidProducts.Data
         public virtual DbSet<InvoiceDetail> InvoiceDetails { get; set; }
         public virtual DbSet<PaymentCondition> PaymentConditions { get; set; }
         public virtual DbSet<Warehouse> Warehouses { get; set; }
+        public virtual DbSet<DocumentType> DocumentTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,6 +31,7 @@ namespace SolidProducts.Data
             modelBuilder.Entity<InvoiceDetail>().HasQueryFilter(id => id.DeletedAt == null);
             modelBuilder.Entity<PaymentCondition>().HasQueryFilter(pc => pc.DeletedAt == null);
             modelBuilder.Entity<Warehouse>().HasQueryFilter(w => w.DeletedAt == null);
+            modelBuilder.Entity<DocumentType>().HasQueryFilter(dt => dt.DeletedAt == null);
             foreach (var entityType in modelBuilder.Model.GetEntityTypes()
                 .Where(t => t.ClrType.IsSubclassOf(typeof(BaseEntity))))
             {
@@ -38,11 +40,11 @@ namespace SolidProducts.Data
                     .HasDefaultValueSql("GETUTCDATE()");
             }
 
-            modelBuilder.Entity<ClientGroup>()
-            .HasMany(e => e.Clients)
-            .WithOne(e => e.ClientGroup)
-            .HasForeignKey(e => e.ClientGroupId)
-            .IsRequired();
+            // modelBuilder.Entity<ClientGroup>()
+            // .HasMany(e => e.Clients)
+            // .WithOne(e => e.ClientGroup)
+            // .HasForeignKey(e => e.ClientGroupId)
+            // .IsRequired();
 
             modelBuilder.Entity<ProductGroup>()
             .HasMany(e => e.Products)

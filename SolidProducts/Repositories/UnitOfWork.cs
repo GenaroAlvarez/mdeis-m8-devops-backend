@@ -15,6 +15,7 @@ namespace SolidProducts.Repositories
         public IRepository<Client> Clients { get; }
         public IRepository<Invoice> Invoices { get; }
         public IRepository<InvoiceDetail> InvoiceDetails { get; }
+        public IRepository<DocumentType> DocumentTypes { get; }
 
 
         public UnitOfWork(AppDbContext context)

@@ -21,4 +21,11 @@ public class ClientController : ControllerBase
         var clients = await _clientService.GetAllAsync();
         return Ok(clients);
     }
+
+    [HttpPost]
+    public async Task<ActionResult<ClientResponseDto>> Create(ClientRequestDto request)
+    {
+        var client = await _clientService.CreateAsync(request);
+        return Ok(client);
+    }
 }

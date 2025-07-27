@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using SolidProducts.DTOs;
+using SolidProducts.Entities;
 using SolidProducts.Interfaces;
 
 namespace SolidProducts.Services;
@@ -32,5 +33,13 @@ public class ClientService : IClientService
            .Where(x => x.Id == id)
            .ProjectTo<ClientResponseDto>(_mapper.ConfigurationProvider)
            .FirstAsync();
+    }
+
+    public async Task<ClientResponseDto> CreateAsync(ClientRequestDto request)
+    {
+        var client = _mapper.Map<Client>(request);
+        var created = await _unitOfWork.Clients.AddAsync(client);
+        await _unitOfWork.CommitAsync();
+        return _mapper.Map<ClientResponseDto>(created);
     }
 }

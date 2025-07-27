@@ -4,7 +4,9 @@ namespace SolidProducts.Entities
     {
         public required string Code { get; set; }
         public required string Name { get; set; }
-        public required int ClientGroupId { get; set; }
-        public ClientGroup ClientGroup { get; set; } = null!;
+        public required string Email { get; set; }
+        public required int DocumentNumber { get; set; }
+        public required int DocumentTypeId { get; set; }
+        public DocumentType DocumentType { get; set; }
     }
 }

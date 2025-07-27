@@ -6,9 +6,7 @@ public static class Calculations
 {
     public static ProductCalculationResponseDto CalculationProduct(ClientResponseDto clientResponseDto, ProductResponseDto productResponseDto, int quantity)
     {
-        decimal discountTotal =
-            (clientResponseDto.ClientGroup.Discount ?? 0) +
-            (productResponseDto.ProductGroup.Discount ?? 0);
+        decimal discountTotal = 0;
 
         var discountResponse = CalculationDiscountAmount(productResponseDto.Price, quantity, discountTotal);
 

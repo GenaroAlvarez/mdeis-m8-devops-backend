@@ -9,14 +9,15 @@ public class InvoiceControllerMapper : Profile
     public InvoiceControllerMapper()
     {
         CreateMap<InvoiceRequestDto, Invoice>()
-            .ForMember(dest => dest.ClientId, opt => opt.MapFrom(src => src.Client.Id))
+            .ForMember(dest => dest.Total, opt => opt.Ignore())
             .ForMember(dest => dest.Client, opt => opt.Ignore())
+            .ForMember(dest => dest.ClientId, opt => opt.MapFrom(src => src.ClientId))
             .ForMember(dest => dest.PaymentCondition, opt => opt.Ignore())
-            .ForMember(dest => dest.PaymentConditionId, opt => opt.MapFrom(src => src.PaymentCondition.Id));
+            .ForMember(dest => dest.PaymentConditionId, opt => opt.MapFrom(src => src.PaymentConditionId));
         // CreateMap<ClientRequest, Client>();
         CreateMap<InvoiceDetailRequest, InvoiceDetail>()
-            .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Product.Id))
             .ForMember(dest => dest.Product, opt => opt.Ignore())
+            .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
             .ForMember(dest => dest.Invoice, opt => opt.Ignore())
             .ForMember(dest => dest.Warehouse, opt => opt.Ignore());
         // CreateMap<PaymentConditionRequest, PaymentCondition>();
@@ -26,5 +27,11 @@ public class InvoiceControllerMapper : Profile
         // .ForMember(dest => dest.Total, opt => opt.MapFrom(src => src.Total))
         // .ForMember(dest => dest.Client, opt => opt.MapFrom(src => src.Client))
         // .ForMember(dest => dest.PaymentCondition, opt => opt.MapFrom(src => src.PaymentCondition));
+
+        CreateMap<Invoice, InvoiceResponseDto>();
+        CreateMap<InvoiceDetail, InvoiceDetailResponse>();
+        CreateMap<Client, ClientResponseDto>();
+        CreateMap<PaymentCondition, PaymentConditionResponseDto>();
+        CreateMap<Product, ProductResponseDto>();
     }
 }

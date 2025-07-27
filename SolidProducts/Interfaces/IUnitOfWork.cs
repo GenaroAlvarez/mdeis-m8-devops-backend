@@ -12,7 +12,8 @@ namespace SolidProducts.Interfaces
         IRepository<Product> Products { get; }
         IRepository<ProductGroup> ProductGroups { get; }
         IRepository<Warehouse> Warehouses { get; }
-        
+        IRepository<DocumentType> DocumentTypes { get; }
+
         Task<int> CommitAsync();
     }
 }

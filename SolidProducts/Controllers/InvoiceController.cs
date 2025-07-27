@@ -30,5 +30,12 @@ namespace SolidProducts.Controllers
         //     var products = await _productService.GetAllAsync();
         //     return Ok(products);
         // }
+        
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<InvoiceResponseDto>>> GetAll()
+        {
+            var invoices = await _invoiceService.GetAllAsync();
+            return Ok(invoices);
+        }
     }
 }

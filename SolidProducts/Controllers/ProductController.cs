@@ -10,7 +10,7 @@ namespace SolidProducts.Controllers
         private readonly IProductService _productService;
         public ProductController(IProductService svc) => _productService = svc;
 
-        [HttpPost]
+        // [HttpPost]
         // public async Task<ActionResult<ProductResponseDto>> Create(ProductRequestDto productRequestDto)
         // {
         //     var product = await _productService.CreateAsync(productRequestDto);
