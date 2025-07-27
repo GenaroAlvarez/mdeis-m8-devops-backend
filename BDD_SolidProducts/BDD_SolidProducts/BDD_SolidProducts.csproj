@@ -18,4 +18,9 @@
     <Folder Include="Support\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\PruebasTDD\PruebasTDD.csproj" />
+    <ProjectReference Include="..\..\SolidProducts\SolidProducts.csproj" />
+  </ItemGroup>
+
 </Project>

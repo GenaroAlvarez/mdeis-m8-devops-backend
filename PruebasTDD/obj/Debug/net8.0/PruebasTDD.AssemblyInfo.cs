@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PruebasTDD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db9900693036284ea8022d0cc732d86150470c41")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32cf3165d3c85afa8b68b0327fc9014193cd222a")]
 [assembly: System.Reflection.AssemblyProductAttribute("PruebasTDD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PruebasTDD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

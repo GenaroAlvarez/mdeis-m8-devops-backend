@@ -103,13 +103,11 @@ namespace BDD_SolidProducts.Features
     await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
-                            "Nit",
-                            "BusinessName",
+                            "Total",
                             "ClientId",
                             "PaymentConditionId"});
                 table3.AddRow(new string[] {
-                            "12345678",
-                            "Empresa ABC",
+                            "190",
                             "1",
                             "1"});
 #line 8
@@ -119,16 +117,14 @@ namespace BDD_SolidProducts.Features
                             "ProductId",
                             "Price",
                             "Quantity",
-                            "Discount",
-                            "WarehouseId"});
+                            "Subtotal"});
                 table4.AddRow(new string[] {
                             "10",
                             "100",
                             "2",
-                            "10",
-                            "1"});
+                            "190"});
 #line 11
-    await testRunner.AndAsync("agrega los siguientes productos a la factura:", ((string)(null)), table4, "And ");
+    await testRunner.AndAsync("agrega los siguientes detalles de factura:", ((string)(null)), table4, "And ");
 #line hidden
 #line 14
     await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -141,12 +137,12 @@ namespace BDD_SolidProducts.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Intentar registrar una factura sin productos")]
-        public async System.Threading.Tasks.Task IntentarRegistrarUnaFacturaSinProductos()
+        [NUnit.Framework.DescriptionAttribute("Intentar registrar una factura sin detalles")]
+        public async System.Threading.Tasks.Task IntentarRegistrarUnaFacturaSinDetalles()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Intentar registrar una factura sin productos", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Intentar registrar una factura sin detalles", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 17
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -161,20 +157,18 @@ namespace BDD_SolidProducts.Features
     await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
-                            "Nit",
-                            "BusinessName",
+                            "Total",
                             "ClientId",
                             "PaymentConditionId"});
                 table5.AddRow(new string[] {
-                            "87654321",
-                            "Empresa XYZ",
+                            "0",
                             "2",
                             "1"});
 #line 19
     await testRunner.WhenAsync("el usuario ingresa los datos de la factura:", ((string)(null)), table5, "When ");
 #line hidden
 #line 22
-    await testRunner.AndAsync("no agrega productos a la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("no agrega detalles a la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 23
     await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -207,13 +201,11 @@ namespace BDD_SolidProducts.Features
     await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
-                            "Nit",
-                            "BusinessName",
+                            "Total",
                             "ClientId",
                             "PaymentConditionId"});
                 table6.AddRow(new string[] {
-                            "12345678",
-                            "Empresa XYZ",
+                            "-10",
                             "2",
                             "1"});
 #line 28
@@ -223,16 +215,14 @@ namespace BDD_SolidProducts.Features
                             "ProductId",
                             "Price",
                             "Quantity",
-                            "Discount",
-                            "WarehouseId"});
+                            "Subtotal"});
                 table7.AddRow(new string[] {
                             "10",
                             "50",
                             "1",
-                            "60",
-                            "1"});
+                            "-10"});
 #line 31
-    await testRunner.AndAsync("agrega los siguientes productos a la factura:", ((string)(null)), table7, "And ");
+    await testRunner.AndAsync("agrega los siguientes detalles de factura:", ((string)(null)), table7, "And ");
 #line hidden
 #line 34
     await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
@@ -245,12 +235,12 @@ namespace BDD_SolidProducts.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Registrar factura con multiples productos")]
-        public async System.Threading.Tasks.Task RegistrarFacturaConMultiplesProductos()
+        [NUnit.Framework.DescriptionAttribute("Registrar factura con multiples detalles")]
+        public async System.Threading.Tasks.Task RegistrarFacturaConMultiplesDetalles()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registrar factura con multiples productos", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registrar factura con multiples detalles", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 37
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -265,13 +255,11 @@ namespace BDD_SolidProducts.Features
     await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
-                            "Nit",
-                            "BusinessName",
+                            "Total",
                             "ClientId",
                             "PaymentConditionId"});
                 table8.AddRow(new string[] {
-                            "12345678",
-                            "Multiventas",
+                            "390",
                             "3",
                             "2"});
 #line 39
@@ -281,34 +269,30 @@ namespace BDD_SolidProducts.Features
                             "ProductId",
                             "Price",
                             "Quantity",
-                            "Discount",
-                            "WarehouseId"});
+                            "Subtotal"});
                 table9.AddRow(new string[] {
                             "101",
                             "50",
                             "2",
-                            "5",
-                            "1"});
+                            "100"});
                 table9.AddRow(new string[] {
                             "102",
                             "100",
                             "1",
-                            "0",
-                            "1"});
+                            "100"});
                 table9.AddRow(new string[] {
                             "103",
                             "20",
                             "5",
-                            "10",
-                            "1"});
+                            "190"});
 #line 42
-      await testRunner.AndAsync("agrega los siguientes productos a la factura:", ((string)(null)), table9, "And ");
+    await testRunner.AndAsync("agrega los siguientes detalles de factura:", ((string)(null)), table9, "And ");
 #line hidden
 #line 47
-      await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 48
-      await testRunner.ThenAsync("se muestra el mensaje de la factura \"Factura registrada exitosamente\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("se muestra el mensaje de la factura \"Factura registrada exitosamente\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

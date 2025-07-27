@@ -105,10 +105,14 @@ namespace BDD_SolidProducts.Features
                 global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
                             "Code",
                             "Name",
-                            "ClientGroupId"});
+                            "Email",
+                            "DocumentNumber",
+                            "DocumentTypeId"});
                 table1.AddRow(new string[] {
                             "C001",
                             "Juan Perez",
+                            "juan@gmail.com",
+                            "1234567890",
                             "1"});
 #line 8
     await testRunner.WhenAsync("el usuario ingresa los datos del cliente:", ((string)(null)), table1, "When ");
@@ -146,11 +150,15 @@ namespace BDD_SolidProducts.Features
                 global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
                             "Code",
                             "Name",
-                            "ClientGroupId"});
+                            "Email",
+                            "DocumentNumber",
+                            "DocumentTypeId"});
                 table2.AddRow(new string[] {
                             "",
-                            "",
-                            "1"});
+                            "Juan Perez",
+                            "juan@gmail.com",
+                            "1234567890",
+                            ""});
 #line 16
     await testRunner.WhenAsync("el usuario ingresa los datos del cliente:", ((string)(null)), table2, "When ");
 #line hidden

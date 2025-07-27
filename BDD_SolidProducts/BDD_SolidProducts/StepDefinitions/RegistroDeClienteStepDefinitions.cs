@@ -1,7 +1,8 @@
-using BDD_SolidProducts.Models;
+//using BDD_SolidProducts.Models;
 using Reqnroll;
 using Reqnroll.Assist;
 using NUnit.Framework;
+using SolidProducts.Entities;
 
 namespace BDD_SolidProducts.StepDefinitions;
 
@@ -26,14 +27,21 @@ public class RegistroDeClienteStepDefinitions
         {
             Code = data.Code,
             Name = data.Name,
-            ClientGroupId = data.ClientGroupId
+            Email = data.Email,
+            DocumentNumber = data.DocumentNumber,
+            DocumentTypeId = data.DocumentTypeId
         };
     }
 
     [When("confirma el registro del cliente")]
     public void WhenConfirmaElRegistroDelCliente()
     {
-        _mensaje = (!string.IsNullOrEmpty(_client.Code) && !string.IsNullOrEmpty(_client.Name))
+        _mensaje = (!string.IsNullOrEmpty(_client.Code) 
+                    && !string.IsNullOrEmpty(_client.Name) 
+                    && !string.IsNullOrEmpty(_client.Email)
+                    && _client.DocumentNumber > 0
+                    && _client.DocumentTypeId > 0
+                    )
             ? "Cliente registrado exitosamente"
             : "Faltan datos obligatorios";
     }

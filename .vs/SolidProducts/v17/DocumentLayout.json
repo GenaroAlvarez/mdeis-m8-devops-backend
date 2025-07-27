@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\danie\\Desktop\\projects\\tdd_be\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0B94DFA6-1627-9AF9-E20F-9FD5F6FE6333}|BDD_SolidProducts\\BDD_SolidProducts\\BDD_SolidProducts.csproj|c:\\users\\danie\\desktop\\projects\\tdd_be\\bdd_solidproducts\\bdd_solidproducts\\features\\registrarfactura.feature||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0B94DFA6-1627-9AF9-E20F-9FD5F6FE6333}|BDD_SolidProducts\\BDD_SolidProducts\\BDD_SolidProducts.csproj|solutionrelative:bdd_solidproducts\\bdd_solidproducts\\features\\registrarfactura.feature||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B94DFA6-1627-9AF9-E20F-9FD5F6FE6333}|BDD_SolidProducts\\BDD_SolidProducts\\BDD_SolidProducts.csproj|c:\\users\\danie\\desktop\\projects\\tdd_be\\bdd_solidproducts\\bdd_solidproducts\\stepdefinitions\\registrodefacturadeventastepdefinitions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B94DFA6-1627-9AF9-E20F-9FD5F6FE6333}|BDD_SolidProducts\\BDD_SolidProducts\\BDD_SolidProducts.csproj|solutionrelative:bdd_solidproducts\\bdd_solidproducts\\stepdefinitions\\registrodefacturadeventastepdefinitions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,16 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 809,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -26,6 +27,36 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegistroDeFacturaDeVentaStepDefinitions.cs",
+              "DocumentMoniker": "C:\\Users\\danie\\Desktop\\projects\\tdd_be\\BDD_SolidProducts\\BDD_SolidProducts\\StepDefinitions\\RegistroDeFacturaDeVentaStepDefinitions.cs",
+              "RelativeDocumentMoniker": "BDD_SolidProducts\\BDD_SolidProducts\\StepDefinitions\\RegistroDeFacturaDeVentaStepDefinitions.cs",
+              "ToolTip": "C:\\Users\\danie\\Desktop\\projects\\tdd_be\\BDD_SolidProducts\\BDD_SolidProducts\\StepDefinitions\\RegistroDeFacturaDeVentaStepDefinitions.cs",
+              "RelativeToolTip": "BDD_SolidProducts\\BDD_SolidProducts\\StepDefinitions\\RegistroDeFacturaDeVentaStepDefinitions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T17:29:25.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RegistrarFactura.feature",
+              "DocumentMoniker": "C:\\Users\\danie\\Desktop\\projects\\tdd_be\\BDD_SolidProducts\\BDD_SolidProducts\\Features\\RegistrarFactura.feature",
+              "RelativeDocumentMoniker": "BDD_SolidProducts\\BDD_SolidProducts\\Features\\RegistrarFactura.feature",
+              "ToolTip": "C:\\Users\\danie\\Desktop\\projects\\tdd_be\\BDD_SolidProducts\\BDD_SolidProducts\\Features\\RegistrarFactura.feature",
+              "RelativeToolTip": "BDD_SolidProducts\\BDD_SolidProducts\\Features\\RegistrarFactura.feature",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAC0AAAAIAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPtSURBVDhPdZTLb1RVHMc/59x75965M3Q6M31RYaBprVAgGDFUEQiIgroBV0JcmLjwsZIYXbnWP8CNe6NREiWEkJBAIo9EUwpINaANIW3pAzptmemUuXfmPo8LZvpK/K5Ozvn9Pud7zu\u002BXn\u002BD/9FU2yc7ERqAAdAAxMItiirt\u002BkW/K9fUpKKXEmo23gS9kiuHMfjr0Y9hydwNmNiLqKB5Ti\u002B8wEV7gu8ptFuLaaoS2vHrFlByze\u002Bg1j6OZH6DLAwLxghRyo0LlQeQ0obUJIbqUQYGs7KNV\u002BuxIlLBklelwHfBNu4s99hEqxococTCl27mBln6jJ71FVAOXjXYnu1sHhKWZiQWvlEOKXgpGmj7jMUtxkRHfWwG2ScFL5kEKxingiERqXVYHJwsnONy5j0l3hsH8Ht4rHEcpuFX\u002BC0ACW4EKs\u002BE0E\u002BEjHIUE4NOMzaB1CDgskKJFTxOoEEtLssUusCszwL62l9mgpwnVs6c1ZABH2W/t57MMADoAphhAFz2WtNLPb\u002BgRn2/7hBl3lofONL/P3\u002BBhbYYJd5JYKcaqD5uwZkE3gehDkAeePHMIvUB7RKQFKkAg6E52Ug4qDJfvMFad4GZphKEnt5lyZ5rAppIoOojZROMfAHKAHcQh816J4YU/KdbnqYYO1dDBCV3K/iJB7NNm5uhL99CWyKOJ5ZqmgLbVQAAEAhAEKmQxqOAEDrGKkQgkkqzZymvtezm15V0OtA9ia8lmqmx\u002BXxM4Bzi2nmRHpp/T/R/xRudBtqYLZPQMGaOFvJnFEhabk92803WE0/0fkzOzTWANKLPcNq8nJTltj1Jqey3yRLE\u002Bx7W5ITbbz3Go/VUSusne/IscaB/kaehw4dElhksj3K2M4sd\u002BCGqIcnyW32rOM4fXapOMB/\u002BEKpye8xY4P3OJ4dIdbD3JQGs/hjRIaSl2ZbYjkVyZ\u002B4PLs1dxQhdgmrHgAddqpRWHY6FHQbfoNfIK1VOP60ZCGqI72YUbu1yfG6ISLJHWU4y7k9yt/Es9ritQIair3PQv8qtzn1W9BO\u002BnWzhqv4UhvkSwA0hY0hKalMIJXQSShJYgVhFBHKjG9Cnix19zqfYLP1bnVxwCTIYBTjzLLvNeo0lbIxXZQRw2CqeIVUSkIhqwCvAtZ6oXuVybwVNqLdBTisWoTjleYJs5jsaDRuUMoH05DjzgPr76gTPVs9yoj1OK/ebhChDAUYpi6KGLKcaDCSRLZLUssBNwgSlgiCfRea7XznLZfUBJeasRa4E07v/bV4z4VTr0OtsS6cZUGQV1hXL8M7f8c3z/9BEe0fr0tRN7vU5uyHAitRnoBkYRUZFzrsdPzvrIZf0HlF2bQabSBKQAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-07-27T17:21:31.854Z",
+              "EditorCaption": ""
             }
           ]
         }
