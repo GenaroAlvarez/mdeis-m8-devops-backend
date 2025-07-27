@@ -15,5 +15,7 @@ public class ClientControllerMapper : Profile
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
             .ForMember(dest => dest.DocumentNumber, opt => opt.MapFrom(src => src.DocumentNumber))
             .ForMember(dest => dest.DocumentType, opt => opt.MapFrom(src => src.DocumentType));
+
+        CreateMap<ClientRequestDto, Client>();
     }
 }

@@ -29,7 +29,7 @@ namespace SolidProducts.Repositories
             Products = new Repository<Product>(context);
             Invoices = new Repository<Invoice>(context);
             InvoiceDetails = new Repository<InvoiceDetail>(context);
-
+            DocumentTypes = new Repository<DocumentType>(context);
         }
 
         public Task<int> CommitAsync()
