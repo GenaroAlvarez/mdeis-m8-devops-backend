@@ -9,12 +9,12 @@ Feature: Registro de Cliente
 		| Code | Name       | Email          | DocumentNumber | DocumentTypeId |
 		| C001 | Juan Perez | juan@gmail.com | 1234567890     | 1              |
     And confirma el registro del cliente
-    Then se muestra el mensaje del cliente "Cliente registrado exitosamente"
+    Then se muestra el mensaje del cliente "Cliente ha sido registrado exitosamente"
 
   Scenario: Intentar registrar cliente con campos vacios
     Given que la aplicacion esta desplegada correctamente
     When el usuario ingresa los datos del cliente:
         | Code | Name       | Email          | DocumentNumber | DocumentTypeId |
-	    |      | Juan Perez | juan@gmail.com | 1234567890     |                |
+	    |      | Juan Perez | juan@gmail.com | 1234567890     | 1              |
     And confirma el registro del cliente
-    Then se muestra el mensaje del cliente "Faltan datos obligatorios"
+    Then se muestra el mensaje de error faltante "Code is required"

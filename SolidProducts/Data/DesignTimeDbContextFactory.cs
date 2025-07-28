@@ -11,7 +11,7 @@ namespace SolidProducts.Data
             var builder = new DbContextOptionsBuilder<AppDbContext>();
             // Conexión a tu contenedor SQL Server
             builder.UseSqlServer(
-              "Server=localhost,1433;Database=products;User=sa;Password=Password123!;TrustServerCertificate=True;Encrypt=False;"
+              "Server=localhost;Database=products;Trusted_Connection=True;Encrypt=False;"
             );
             return new AppDbContext(builder.Options);
         }

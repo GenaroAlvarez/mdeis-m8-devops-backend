@@ -121,7 +121,7 @@ namespace BDD_SolidProducts.Features
     await testRunner.AndAsync("confirma el registro del cliente", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 12
-    await testRunner.ThenAsync("se muestra el mensaje del cliente \"Cliente registrado exitosamente\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("se muestra el mensaje del cliente \"Cliente ha sido registrado exitosamente\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -158,7 +158,7 @@ namespace BDD_SolidProducts.Features
                             "Juan Perez",
                             "juan@gmail.com",
                             "1234567890",
-                            ""});
+                            "1"});
 #line 16
     await testRunner.WhenAsync("el usuario ingresa los datos del cliente:", ((string)(null)), table2, "When ");
 #line hidden
@@ -166,7 +166,7 @@ namespace BDD_SolidProducts.Features
     await testRunner.AndAsync("confirma el registro del cliente", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 20
-    await testRunner.ThenAsync("se muestra el mensaje del cliente \"Faltan datos obligatorios\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("se muestra el mensaje de error faltante \"Code is required\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

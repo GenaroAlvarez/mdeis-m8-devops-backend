@@ -90,7 +90,7 @@ namespace BDD_SolidProducts.Features
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registrar factura con un producto", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
-  this.ScenarioInitialize(scenarioInfo);
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -100,135 +100,32 @@ namespace BDD_SolidProducts.Features
             {
                 await this.ScenarioStartAsync();
 #line 7
-    await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
-                            "Total",
                             "ClientId",
                             "PaymentConditionId"});
                 table3.AddRow(new string[] {
-                            "190",
                             "1",
                             "1"});
 #line 8
-    await testRunner.WhenAsync("el usuario ingresa los datos de la factura:", ((string)(null)), table3, "When ");
+ await testRunner.WhenAsync("el usuario ingresa los datos de la factura:", ((string)(null)), table3, "When ");
 #line hidden
                 global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
                             "ProductId",
-                            "Price",
-                            "Quantity",
-                            "Subtotal"});
+                            "Quantity"});
                 table4.AddRow(new string[] {
-                            "10",
-                            "100",
-                            "2",
-                            "190"});
+                            "1",
+                            "2"});
 #line 11
-    await testRunner.AndAsync("agrega los siguientes detalles de factura:", ((string)(null)), table4, "And ");
+ await testRunner.AndAsync("agrega los siguientes detalles de factura:", ((string)(null)), table4, "And ");
 #line hidden
 #line 14
-    await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 15
-    await testRunner.ThenAsync("se muestra el mensaje de la factura \"Factura registrada exitosamente\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Intentar registrar una factura sin detalles")]
-        public async System.Threading.Tasks.Task IntentarRegistrarUnaFacturaSinDetalles()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Intentar registrar una factura sin detalles", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 17
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 18
-    await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
-                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
-                            "Total",
-                            "ClientId",
-                            "PaymentConditionId"});
-                table5.AddRow(new string[] {
-                            "0",
-                            "2",
-                            "1"});
-#line 19
-    await testRunner.WhenAsync("el usuario ingresa los datos de la factura:", ((string)(null)), table5, "When ");
-#line hidden
-#line 22
-    await testRunner.AndAsync("no agrega detalles a la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 23
-    await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 24
-    await testRunner.ThenAsync("se muestra el mensaje de la factura \"La factura no tiene detalles validos\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Intentar registrar factura con subtotal negativo")]
-        public async System.Threading.Tasks.Task IntentarRegistrarFacturaConSubtotalNegativo()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Intentar registrar factura con subtotal negativo", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 26
-  this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 27
-    await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
-                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
-                            "Total",
-                            "ClientId",
-                            "PaymentConditionId"});
-                table6.AddRow(new string[] {
-                            "-10",
-                            "2",
-                            "1"});
-#line 28
-    await testRunner.WhenAsync("el usuario ingresa los datos de la factura:", ((string)(null)), table6, "When ");
-#line hidden
-                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
-                            "ProductId",
-                            "Price",
-                            "Quantity",
-                            "Subtotal"});
-                table7.AddRow(new string[] {
-                            "10",
-                            "50",
-                            "1",
-                            "-10"});
-#line 31
-    await testRunner.AndAsync("agrega los siguientes detalles de factura:", ((string)(null)), table7, "And ");
-#line hidden
-#line 34
-    await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 35
-    await testRunner.ThenAsync("se muestra el mensaje de la factura \"Subtotal invalido en producto\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.ThenAsync("se muestra el mensaje correcto de registro \"Factura de venta ha sido registrado e" +
+                        "xitosamente\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -241,8 +138,8 @@ namespace BDD_SolidProducts.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Registrar factura con multiples detalles", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 37
-  this.ScenarioInitialize(scenarioInfo);
+#line 18
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -251,48 +148,126 @@ namespace BDD_SolidProducts.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 38
-    await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line 19
+ await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
-                            "Total",
+                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
                             "ClientId",
                             "PaymentConditionId"});
-                table8.AddRow(new string[] {
-                            "390",
-                            "3",
+                table5.AddRow(new string[] {
+                            "1",
                             "2"});
-#line 39
-    await testRunner.WhenAsync("el usuario ingresa los datos de la factura:", ((string)(null)), table8, "When ");
+#line 20
+ await testRunner.WhenAsync("el usuario ingresa los datos de la factura:", ((string)(null)), table5, "When ");
+#line hidden
+                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
+                            "ProductId",
+                            "Quantity"});
+                table6.AddRow(new string[] {
+                            "1",
+                            "2"});
+                table6.AddRow(new string[] {
+                            "2",
+                            "1"});
+                table6.AddRow(new string[] {
+                            "3",
+                            "5"});
+#line 23
+ await testRunner.AndAsync("agrega los siguientes detalles de factura:", ((string)(null)), table6, "And ");
+#line hidden
+#line 28
+ await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 29
+ await testRunner.ThenAsync("se muestra el mensaje correcto de registro \"Factura de venta ha sido registrado e" +
+                        "xitosamente\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Intentar registrar factura con cantidad negativa")]
+        public async System.Threading.Tasks.Task IntentarRegistrarFacturaConCantidadNegativa()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Intentar registrar factura con cantidad negativa", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 32
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 33
+ await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
+                            "ClientId",
+                            "PaymentConditionId"});
+                table7.AddRow(new string[] {
+                            "1",
+                            "1"});
+#line 34
+ await testRunner.WhenAsync("el usuario ingresa los datos de la factura:", ((string)(null)), table7, "When ");
+#line hidden
+                global::Reqnroll.Table table8 = new global::Reqnroll.Table(new string[] {
+                            "ProductId",
+                            "Quantity"});
+                table8.AddRow(new string[] {
+                            "1",
+                            "-1"});
+#line 37
+ await testRunner.AndAsync("agrega los siguientes detalles de factura:", ((string)(null)), table8, "And ");
+#line hidden
+#line 40
+ await testRunner.ThenAsync("se muestra el mensaje de error de cantidad negativa \"Quantity must be >= 1\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Intentar registrar una factura sin detalles")]
+        public async System.Threading.Tasks.Task IntentarRegistrarUnaFacturaSinDetalles()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Intentar registrar una factura sin detalles", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 43
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 44
+ await testRunner.GivenAsync("que la aplicacion esta desplegada correctamente", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
                 global::Reqnroll.Table table9 = new global::Reqnroll.Table(new string[] {
-                            "ProductId",
-                            "Price",
-                            "Quantity",
-                            "Subtotal"});
+                            "ClientId",
+                            "PaymentConditionId"});
                 table9.AddRow(new string[] {
-                            "101",
-                            "50",
-                            "2",
-                            "100"});
-                table9.AddRow(new string[] {
-                            "102",
-                            "100",
                             "1",
-                            "100"});
-                table9.AddRow(new string[] {
-                            "103",
-                            "20",
-                            "5",
-                            "190"});
-#line 42
-    await testRunner.AndAsync("agrega los siguientes detalles de factura:", ((string)(null)), table9, "And ");
-#line hidden
-#line 47
-    await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+                            "1"});
+#line 45
+ await testRunner.WhenAsync("el usuario ingresa los datos de la factura:", ((string)(null)), table9, "When ");
 #line hidden
 #line 48
-    await testRunner.ThenAsync("se muestra el mensaje de la factura \"Factura registrada exitosamente\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+ await testRunner.AndAsync("no agrega detalles a la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 49
+ await testRunner.AndAsync("confirma el registro de la factura", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 50
+ await testRunner.ThenAsync("se muestra el mensaje de error sin detalle \"There are no products selected\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

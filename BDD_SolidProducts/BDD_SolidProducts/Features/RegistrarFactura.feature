@@ -3,46 +3,48 @@ Feature: Registro de Factura de Venta
   Quiero registrar facturas de venta
   Para documentar las transacciones con clientes
 
-  Scenario: Registrar factura con un producto
-    Given que la aplicacion esta desplegada correctamente
-    When el usuario ingresa los datos de la factura:
-      | Total | ClientId | PaymentConditionId |
-      | 190   | 1        | 1                  |
-    And agrega los siguientes detalles de factura:
-      | ProductId | Price | Quantity | Subtotal |
-      | 10        | 100   | 2        | 190      |
-    And confirma el registro de la factura
-    Then se muestra el mensaje de la factura "Factura registrada exitosamente"
+Scenario: Registrar factura con un producto
+	Given que la aplicacion esta desplegada correctamente
+	When el usuario ingresa los datos de la factura:
+		| ClientId | PaymentConditionId |
+		| 1        | 1					|
+	And agrega los siguientes detalles de factura:
+		| ProductId | Quantity |
+		| 1         | 2        |
+	And confirma el registro de la factura
+	Then se muestra el mensaje correcto de registro "Factura de venta ha sido registrado exitosamente"
 
-  Scenario: Intentar registrar una factura sin detalles
-    Given que la aplicacion esta desplegada correctamente
-    When el usuario ingresa los datos de la factura:
-      | Total | ClientId | PaymentConditionId |
-      | 0     | 2        | 1                  |
-    And no agrega detalles a la factura
-    And confirma el registro de la factura
-    Then se muestra el mensaje de la factura "La factura no tiene detalles validos"
 
-  Scenario: Intentar registrar factura con subtotal negativo
-    Given que la aplicacion esta desplegada correctamente
-    When el usuario ingresa los datos de la factura:
-      | Total | ClientId | PaymentConditionId |
-      | -10   | 2        | 1                  |
-    And agrega los siguientes detalles de factura:
-      | ProductId | Price | Quantity | Subtotal |
-      | 10        | 50    | 1        | -10      |
-    And confirma el registro de la factura
-    Then se muestra el mensaje de la factura "Subtotal invalido en producto"
+Scenario: Registrar factura con multiples detalles
+	Given que la aplicacion esta desplegada correctamente
+	When el usuario ingresa los datos de la factura:
+		| ClientId | PaymentConditionId |
+		| 1        | 2                  |
+	And agrega los siguientes detalles de factura:
+		| ProductId | Quantity |
+		| 1			| 2        |
+		| 2			| 1        |
+		| 3			| 5        |
+	And confirma el registro de la factura
+	Then se muestra el mensaje correcto de registro "Factura de venta ha sido registrado exitosamente"
 
-  Scenario: Registrar factura con multiples detalles
-    Given que la aplicacion esta desplegada correctamente
-    When el usuario ingresa los datos de la factura:
-      | Total | ClientId | PaymentConditionId |
-      | 390   | 3        | 2                  |
-    And agrega los siguientes detalles de factura:
-      | ProductId | Price | Quantity | Subtotal |
-      | 101       | 50    | 2        | 100      |
-      | 102       | 100   | 1        | 100      |
-      | 103       | 20    | 5        | 190      |
-    And confirma el registro de la factura
-    Then se muestra el mensaje de la factura "Factura registrada exitosamente"
+
+Scenario: Intentar registrar factura con cantidad negativa
+	Given que la aplicacion esta desplegada correctamente
+	When el usuario ingresa los datos de la factura:
+		| ClientId | PaymentConditionId |
+		| 1        | 1                  |
+	And agrega los siguientes detalles de factura:
+		| ProductId | Quantity |
+		| 1         | -1       |
+	Then se muestra el mensaje de error de cantidad negativa "Quantity must be >= 1"
+
+
+Scenario: Intentar registrar una factura sin detalles
+	Given que la aplicacion esta desplegada correctamente
+	When el usuario ingresa los datos de la factura:
+		| ClientId | PaymentConditionId |
+		| 1        | 1                  |
+	And no agrega detalles a la factura
+	And confirma el registro de la factura
+	Then se muestra el mensaje de error sin detalle "There are no products selected"

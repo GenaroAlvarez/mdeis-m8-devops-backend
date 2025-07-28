@@ -30,7 +30,7 @@ namespace SolidProducts.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClientGroupId")
+                    b.Property<int?>("ClientGroupId")
                         .HasColumnType("int");
 
                     b.Property<string>("Code")
@@ -45,6 +45,16 @@ namespace SolidProducts.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DocumentNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocumentTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -55,6 +65,8 @@ namespace SolidProducts.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClientGroupId");
+
+                    b.HasIndex("DocumentTypeId");
 
                     b.ToTable("Clients");
                 });
@@ -94,7 +106,7 @@ namespace SolidProducts.Migrations
                     b.ToTable("ClientGroups");
                 });
 
-            modelBuilder.Entity("SolidProducts.Entities.Invoice", b =>
+            modelBuilder.Entity("SolidProducts.Entities.DocumentType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,9 +114,37 @@ namespace SolidProducts.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BusinessName")
+                    b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DocumentTypes");
+                });
+
+            modelBuilder.Entity("SolidProducts.Entities.Invoice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
@@ -116,9 +156,6 @@ namespace SolidProducts.Migrations
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Nit")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("PaymentConditionId")
                         .HasColumnType("int");
@@ -225,6 +262,10 @@ namespace SolidProducts.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -322,13 +363,17 @@ namespace SolidProducts.Migrations
 
             modelBuilder.Entity("SolidProducts.Entities.Client", b =>
                 {
-                    b.HasOne("SolidProducts.Entities.ClientGroup", "ClientGroup")
+                    b.HasOne("SolidProducts.Entities.ClientGroup", null)
                         .WithMany("Clients")
-                        .HasForeignKey("ClientGroupId")
+                        .HasForeignKey("ClientGroupId");
+
+                    b.HasOne("SolidProducts.Entities.DocumentType", "DocumentType")
+                        .WithMany()
+                        .HasForeignKey("DocumentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ClientGroup");
+                    b.Navigation("DocumentType");
                 });
 
             modelBuilder.Entity("SolidProducts.Entities.Invoice", b =>
