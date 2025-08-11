@@ -1,3 +1,5 @@
+use products;
+
 INSERT INTO ClientGroups (Name, Code, Discount, CreatedAt, UpdatedAt, DeletedAt)
 VALUES ('Clientes Premium', 'PREM', 15.5, GETUTCDATE(), NULL, NULL);
 
@@ -38,3 +40,16 @@ VALUES ('Crédito 30 días', GETUTCDATE(), NULL, NULL);
 
 INSERT INTO PaymentConditions (Name, CreatedAt, UpdatedAt, DeletedAt)
 VALUES ('Crédito 60 días', GETUTCDATE(), NULL, NULL);
+
+INSERT INTO Warehouses (Name, CreatedAt) VALUES(N'ALMACEN PRINCIPAL', GETUTCDATE());
+
+INSERT INTO Products (Code, Name, Price, ProductGroupId, Brand, CreatedAt) VALUES
+(N'P01', N'Sprite', 10.00, (SELECT id FROM ProductGroups WHERE Code = 'ELEC'), N'MARCA', GETUTCDATE()),
+(N'P02', N'PRODUCTO 2', 100.00, (SELECT id FROM ProductGroups WHERE Code = 'LBLA'), N'MARCA', GETUTCDATE()),
+(N'P03', N'PRODUCTO 3', 100.00, (SELECT id FROM ProductGroups WHERE Code = 'MUEB'), N'MARCA', GETUTCDATE()),
+(N'P04', N'PRODUCTO 4', 100.00, (SELECT id FROM ProductGroups WHERE Code = 'HERR'), N'MARCA', GETUTCDATE()),
+(N'P05', N'PRODUCTO 5', 100.00, (SELECT id FROM ProductGroups WHERE Code = 'TECH'), N'MARCA', GETUTCDATE());
+
+INSERT INTO DocumentTypes(Code, Name, CreatedAt) VALUES
+('CI', 'Carnet de Identidad', GETUTCDATE()),
+('NIT', 'Número de Identificación Tributaria', GETUTCDATE());
