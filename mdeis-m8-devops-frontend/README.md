@@ -59,13 +59,14 @@ npm run build
 ### 3. Configurar NGINX
 Ingresa al archivo `../nginx/conf/nginx.conf` y agrega este bloque de configuración:
 ```
-  server {
-        listen 8080;
-        server_name localhost;
+    server {
+        listen       8080;
+        server_name  localhost;
 
-        location /grupo5-frontend/ {
-            alias "<PATH_NGINX>/html/grupo5-frontend/"; # camia PATH_NGINX por la ruta donde se encuentra el directorio nginx
-            index index.html;
+        root   "<PATH_NGINX>/html/grupo5-frontend"; # camia PATH_NGINX por la ruta donde se encuentra el directorio nginx
+        index  index.html;
+
+        location / {
             try_files $uri $uri/ /index.html;
         }
     }
@@ -84,5 +85,5 @@ nginx -s reload
 ### 5: Accede a la aplicación
 La aplicación estará disponible en:
 ```
-http://localhost:8080/grupo5-frontend/
+http://localhost:8080
 ```
