@@ -24,6 +24,7 @@
 	</PackageReference>
 
 	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+	<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="9.0.8" />
 	</ItemGroup>
 
 

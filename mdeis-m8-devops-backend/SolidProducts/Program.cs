@@ -21,6 +21,10 @@ builder.Services.AddCors(options =>
         });
 });
 
+builder.Host.UseWindowsService(options =>
+{
+    options.ServiceName = "SolidProductsBackendService";
+});
 
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(opts =>
