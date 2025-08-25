@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:5000/api/v1", // replace with your real API URL
+  baseURL: import.meta.env.VITE_BACKEND_URL || "http://localhost:5000/api/v1",
   httpsAgent: false,
   timeout: 5000,
   headers: {
