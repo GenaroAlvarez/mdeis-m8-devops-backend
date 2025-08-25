@@ -91,18 +91,82 @@ Antes de iniciar, asegúrate de tener instalado:
 
 ## 🚀 Despliegue
 ### Backend
-#### 1. Publicar el proyecto
+#### 1. Restaurar dependencias del proyecto
+```bash
+dotnet restore
+```
+
+#### 2. Publicar el proyecto
 Genera la versión lista para producción:
 ```bash
-dotnet publish -c Release -o ./publish
+dotnet publish SolidProducts -c Release --runtime win-x64 --self-contained -o publish
 ```
 Esto creará los archivos en la carpeta `publish`.
 
-#### 2. Configurar nginx
+#### 3. Configura las variables de entorno
+Según el ambiente, crear el archivo `appsettings.json` dentro de la carpeta `./release` configurando las siguientes variables:
+- `BACKEND_PORT`: Puerto interno de despliegue del backend
+- `FRONTEND_PORT`: Puerto de despliegue del frontend
+- `DATABASE`: Nombre de base de datos
+
+```json
+{
+  "Urls": "http://localhost:BACKEND_PORT",
+  "AllowedOrigins": "http://localhost:FRONTEND_PORT",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=DATABASE;User Id=sa;Password=Password123!;TrustServerCertificate=True;Encrypt=False;"
+  }
+}
+```
+
+#### 4. Crea y ejecuta servicio
+Crear el servicio de Windows para ejecutar el backend en background, configurando las siguientes variables:
+- `ENV`: Ambiente de despligue (DEV, TEST, PROD)
+- `PUBLISH_PATH`: Dirección donde se publicó el proyecto en el paso 2
+
+```bash
+sc create SolidProductsBackendService-ENV binPath="PUBLISH_PATH\\SolidProducts.exe" start=auto
+sc start SolidProductsBackendService-ENV
+```
+
+#### 5. Configurar nginx
 Edita el archivo `nginx.conf` para agregar el proxy inverso:
 ```nginx
+# Backend - Development
 server {
-    listen 80;
+    listen 5051;
+
+    location / {
+        proxy_pass         http://localhost:5001;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}
+
+# Backend - Test
+server {
+    listen 5052;
+
+    location / {
+        proxy_pass         http://localhost:5002;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}
+
+# Backend - Production
+server {
+    listen 5050;
 
     location / {
         proxy_pass         http://localhost:5000;
@@ -117,30 +181,41 @@ server {
 }
 ```
 
-#### 3. Ejecutar la API
-Inicia la API publicada desde la carpeta `publish`:
-```bash
-dotnet SolidProducts.dll --urls "http://localhost:5000"
-```
-
-#### 4. Iniciar nginx
+#### 6. Iniciar nginx
 Ejecuta `nginx.exe` desde su carpeta de instalación:
 ```bash
 start nginx
 ```
 
-#### 5. Ejecuta el script de datos
-Ejecuta el script `inserts.sql` para llenar datos iniciales.
+#### 7. Accede a los servicios
 
-Ahora tu API estará accesible en:
-```
-http://localhost
+La API estará accesible en:
+```nginx
+# Development
+http://localhost:5001
+
+# Test
+http://localhost:5002
+
+# Production
+http://localhost:5000
 ```
 
 Para validar funcionamiento, ingresa a la siguiente URL:
+```nginx
+# Development
+http://localhost:5001/api/v1/products
+
+# Test
+http://localhost:5002/api/v1/products
+
+# Production
+http://localhost:5000/api/v1/products
 ```
-http://localhost/api/v1/products
-```
+
+#### 8. Ejecuta el script de datos (solo la primera vez)
+Ejecuta el script `inserts.sql` para llenar datos iniciales.
+
 ### Frontend
 #### 1. Crear directorios para cada ambiente
 Navega hacia el directorio `../nginx/html` y crea tres directorios, uno para cada ambiente:
@@ -193,7 +268,7 @@ Estructura Final de Directorios
 #### 3. Configurar NGINX
 Ingresa al archivo `../nginx/conf/nginx.conf` y agrega este bloque de configuración para cada ambiente:
 ```nginx
-    # Development
+    # Frontend - sDevelopment
     server {
         listen       8081;
         server_name  localhost;
@@ -206,7 +281,7 @@ Ingresa al archivo `../nginx/conf/nginx.conf` y agrega este bloque de configurac
         }
     }
 
-    # Test
+    # Frontend - sTest
     server {
         listen       8082;
         server_name  localhost;
@@ -219,7 +294,7 @@ Ingresa al archivo `../nginx/conf/nginx.conf` y agrega este bloque de configurac
         }
     }
 
-    # Production
+    # Frontend - sProduction
     server {
         listen       8080;
         server_name  localhost;
@@ -258,10 +333,10 @@ net start nginx
 #### 5: Accede a la aplicación
 La aplicación estará disponible en:
 ```nginx
-# Development:
+# Development
 http://localhost:8081
 
-# Test:
+# Test
 http://localhost:8082
 
 # Production
