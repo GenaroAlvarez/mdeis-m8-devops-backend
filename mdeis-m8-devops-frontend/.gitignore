@@ -9,7 +9,10 @@ lerna-debug.log*
 
 # Envs files
 .env
-.env.*
+.env.staging
+.env.production
+.env.development
+.env.test
 
 # build outputs
 dist*
