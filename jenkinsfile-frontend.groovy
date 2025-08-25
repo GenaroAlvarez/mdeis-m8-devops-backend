@@ -10,9 +10,9 @@ pipeline {
 
         string(name: 'FRONTEND_DIR', defaultValue: 'mdeis-m8-devops-frontend', description: 'Carpeta del frontend dentro del repo')
 
-        string(name: 'BACKEND_URL_PROD', defaultValue: 'http://localhost:5000/api/v1', description: 'URL del backend para producción')
-        string(name: 'BACKEND_URL_DEVELOPMENT', defaultValue: 'http://localhost:5001/api/v1', description: 'URL del backend para desarrollo')
-        string(name: 'BACKEND_URL_TEST', defaultValue: 'http://localhost:5002/api/v1', description: 'URL del backend para test')
+        string(name: 'BACKEND_URL_PROD', defaultValue: 'http://localhost:5050/api/v1', description: 'URL del backend para producción')
+        string(name: 'BACKEND_URL_DEVELOPMENT', defaultValue: 'http://localhost:5051/api/v1', description: 'URL del backend para desarrollo')
+        string(name: 'BACKEND_URL_TEST', defaultValue: 'http://localhost:5052/api/v1', description: 'URL del backend para test')
 
         string(name: 'NGINX_HTML_PATH_TEST', defaultValue: 'C:\\Program Files\\nginx\\html\\grupo5-frontend-test\\', description: 'Ruta de destino para test')
         string(name: 'NGINX_HTML_PATH_DEVELOPMENT', defaultValue: 'C:\\Program Files\\nginx\\html\\grupo5-frontend-development\\', description: 'Ruta de destino para desarrollo')
