@@ -142,25 +142,89 @@ Para validar funcionamiento, ingresa a la siguiente URL:
 http://localhost/api/v1/products
 ```
 ### Frontend
-#### 1. Construcción del Proyecto
-Genera los archivos estáticos para producción ejecutando:
+#### 1. Crear directorios para cada ambiente
+Navega hacia el directorio `../nginx/html` y crea tres directorios, uno para cada ambiente:
 
 ```bash
+# Development
+grupo5-frontend-development/
+
+# Test
+grupo5-frontend-test/
+
+# Production
+grupo5-frontend-production/
+```
+
+#### 2. Despliegue por Ambiente
+Generación de archivos estáticos para los distintos ambientes:
+
+```bash
+# Development
+npm run build:development
+
+# Test
+npm run build:test
+
+# Production
 npm run build
 ```
 
-#### 2. Configurar el directorio en NGINX
-- Navega hacia el directorio `../nginx/html` y crear el directorio `grupo5-frontend`
-- Mueve todos los archivos del directorio `../mdeis-m8-devops-frontend/dist/` hacia el nuevo directorio `grupo5-frontend`
+Luego, mueve los archivos generados en `../mdeis-m8-devops-frontend/dist-<ambiente>/` al directorio de NGINX del ambiente destino:
+```bash
+# Development
+../mdeis-m8-devops-frontend/dist-development/ -> ../nginx/html/grupo5-frontend-development/
+
+# Test
+../mdeis-m8-devops-frontend/dist-test/ -> ../nginx/html/grupo5-frontend-test/
+
+# Production
+../mdeis-m8-devops-frontend/dist-production/ -> ../nginx/html/grupo5-frontend-production/
+```
+
+Estructura Final de Directorios
+```bash
+../nginx/html/
+├── grupo5-frontend-development/    # Ambiente de desarrollo
+├── grupo5-frontend-test/           # Ambiente de test
+└── grupo5-frontend-production/     # Ambiente de producción
+```
 
 #### 3. Configurar NGINX
-Ingresa al archivo `../nginx/conf/nginx.conf` y agrega este bloque de configuración:
-```
+Ingresa al archivo `../nginx/conf/nginx.conf` y agrega este bloque de configuración para cada ambiente:
+```nginx
+    # Development
+    server {
+        listen       8081;
+        server_name  localhost;
+
+        root   "<PATH_NGINX>/html/grupo5-frontend-development";
+        index  index.html;
+
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+    }
+
+    # Test
+    server {
+        listen       8082;
+        server_name  localhost;
+
+        root   "<PATH_NGINX>/html/grupo5-frontend-test";
+        index  index.html;
+
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+    }
+
+    # Production
     server {
         listen       8080;
         server_name  localhost;
 
-        root   "<PATH_NGINX>/html/grupo5-frontend"; # camia PATH_NGINX por la ruta donde se encuentra el directorio nginx
+        root   "<PATH_NGINX>/html/grupo5-frontend-production";
         index  index.html;
 
         location / {
@@ -193,6 +257,14 @@ net start nginx
 
 #### 5: Accede a la aplicación
 La aplicación estará disponible en:
-```
+```nginx
+# Development:
+http://localhost:8081
+
+# Test:
+http://localhost:8082
+
+# Production
 http://localhost:8080
+
 ```
