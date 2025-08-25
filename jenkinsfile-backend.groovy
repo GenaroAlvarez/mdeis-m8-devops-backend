@@ -1,97 +1,105 @@
 pipeline {
     agent any
 
-    environment {
-        REPO_URL = "https://github.com/GenaroAlvarez/mdeis-m8-devops-backend"
-        BACKEND_DIR = "mdeis-m8-devops-backend"
-        PROJECT_NAME = "SolidProducts"
-        PUBLISH_DIR = "${BACKEND_DIR}\\publish"
-        NGINX_PATH = "C:\\tools\\nginx"
-        API_PORT = "5000"
-        FRONTEND_PORT = "8080"
-        SERVICE_NAME = "SolidProductsBackendService"
+    parameters {
+        string(name: 'GIT_URL', defaultValue: 'https://github.com/GenaroAlvarez/mdeis-m8-devops-backend.git', description: 'URL del repositorio Git')
+
+        string(name: 'GIT_BRANCH_PROD', defaultValue: 'master', description: 'Rama para producción')
+        string(name: 'GIT_BRANCH_DEVELOPMENT', defaultValue: 'dev', description: 'Rama para desarrollo')
+        string(name: 'GIT_BRANCH_TEST', defaultValue: 'qa', description: 'Rama para test')
+
+        string(name: 'BACKEND_DIR', defaultValue: 'mdeis-m8-devops-backend', description: 'Carpeta del backend dentro del repo')
+        string(name: 'PROJECT_NAME', defaultValue: 'SolidProducts', description: 'Nombre del proyecto .NET')
+
+        string(name: 'API_PORT_PROD', defaultValue: '5000', description: 'Puerto interno de la API en producción')
+        string(name: 'API_PORT_DEVELOPMENT', defaultValue: '5001', description: 'Puerto interno de la API en desarrollo')
+        string(name: 'API_PORT_TEST', defaultValue: '5002', description: 'Puerto interno de la API en test')
+
+        string(name: 'NGINX_PORT_PROD', defaultValue: '5050', description: 'Puerto expuesto en producción')
+        string(name: 'NGINX_PORT_DEVELOPMENT', defaultValue: '5051', description: 'Puerto expuesto en desarrollo')
+        string(name: 'NGINX_PORT_TEST', defaultValue: '5052', description: 'Puerto expuesto en test')
+
+        string(name: 'FRONTEND_PORT', defaultValue: '3000', description: 'Puerto del frontend')
+
+        string(name: 'NGINX_PATH', defaultValue: 'C:\\tools\\nginx', description: 'Ruta de instalación de Nginx')
+
+        booleanParam(name: 'DEPLOY_TEST', defaultValue: true, description: '¿Desplegar en ambiente de test?')
+        booleanParam(name: 'DEPLOY_DEVELOPMENT', defaultValue: false, description: '¿Desplegar en ambiente de desarrollo?')
+        booleanParam(name: 'DEPLOY_PROD', defaultValue: false, description: '¿Desplegar en ambiente de producción?')
     }
 
     stages {
-        stage('Checkout Github project') {
+        stage('Stop nginx process') {
             steps {
-                git url: "${REPO_URL}", branch: "master"
+                powershell '''
+                    if (Get-Service -Name "nginx" -ErrorAction SilentlyContinue) {
+                        if ((Get-Service -Name "nginx").Status -eq "Running") {
+                            net stop nginx
+                            Write-Host "nginx detenido"
+                        } else {
+                            Write-Host "nginx ya estaba detenido"
+                        }
+                    } else {
+                        Write-Host "nginx no está registrado como servicio"
+                    }
+                '''
             }
         }
 
-        stage('Restore dependencies') {
-            steps {
-                dir(BACKEND_DIR) {
-                    bat "dotnet restore"
+        stage('Build for Environments') {
+            parallel {
+                stage('Build for Test') {
+                    when { expression { return params.DEPLOY_TEST } }
+                    steps {
+                        buildForEnvironment('test', params.GIT_BRANCH_TEST, params.API_PORT_TEST)
+                    }
+                }
+                stage('Build for Development') {
+                    when { expression { return params.DEPLOY_DEVELOPMENT } }
+                    steps {
+                        buildForEnvironment('development', params.GIT_BRANCH_DEVELOPMENT, params.API_PORT_DEVELOPMENT)
+                    }
+                }
+                stage('Build for Production') {
+                    when { expression { return params.DEPLOY_PROD } }
+                    steps {
+                        buildForEnvironment('production', params.GIT_BRANCH_PROD, params.API_PORT_PROD)
+                    }
                 }
             }
         }
 
-        stage('Stop API background service') {
-            steps {
-                script {
-                    bat """
-                    sc query ${SERVICE_NAME} >nul 2>&1
-                    if %ERRORLEVEL% EQU 0 (
-                        echo Stopping ${SERVICE_NAME}...
-                        sc stop ${SERVICE_NAME} >nul 2>&1 || echo Service wasn't running
-                        sc delete ${SERVICE_NAME} >nul 2>&1 || echo Service didn't exist
-                    ) else (
-                        echo ${SERVICE_NAME} doesn't exists
-                    )
-                    exit /b 0
-                    """
-
-                    // Stops Nginx
-                    // bat """
-                    // taskkill /IM nginx.exe /F || echo Nginx wasn't running
-                    // """
+        stage('Deploy Services') {
+            parallel {
+                stage('Deploy to Test') {
+                    when { expression { return params.DEPLOY_TEST } }
+                    steps {
+                        deployToEnvironment('test', params.API_PORT_TEST, params.NGINX_PORT_TEST)
+                    }
+                }
+                stage('Deploy to Development') {
+                    when { expression { return params.DEPLOY_DEVELOPMENT } }
+                    steps {
+                        deployToEnvironment('development', params.API_PORT_DEVELOPMENT, params.NGINX_PORT_DEVELOPMENT)
+                    }
+                }
+                stage('Deploy to Production') {
+                    when { expression { return params.DEPLOY_PROD } }
+                    steps {
+                        deployToEnvironment('production', params.API_PORT_PROD, params.NGINX_PORT_PROD)
+                    }
                 }
             }
         }
 
-        stage('Publish project as a self contained service') {
+        stage('Start nginx process') {
             steps {
-                dir(BACKEND_DIR) {
-                    bat """
-                    dotnet publish ${PROJECT_NAME} -c Release --runtime win-x64 --self-contained -o publish
-                    """
-                }
+                powershell(returnStdout:true, script:'net start nginx')
+                echo 'The nginx process has been started.'
             }
         }
-
-        stage('Set configuration') {
-            steps {
-                writeFile file: "${PUBLISH_DIR}\\appsettings.json", text: """
-                {
-                  "Urls": "http://localhost:${API_PORT}",
-                  "AllowedOrigins": "http://localhost:${FRONTEND_PORT}",
-                  "ConnectionStrings": {
-                    "DefaultConnection": "Server=localhost;Database=products;User Id=sa;Password=Password123!;TrustServerCertificate=True;Encrypt=False;"
-                  }
-                }
-                """
-            }
-        }
-
-        stage('Run API as a background service') {
-            steps {
-                bat """
-                sc create ${SERVICE_NAME} binPath="${env.WORKSPACE}\\${PUBLISH_DIR}\\${PROJECT_NAME}.exe" start=auto
-                sc start ${SERVICE_NAME}
-                """
-            }
-        }
-
-        // stage('Iniciar Nginx') {
-        //     steps {
-        //         bat """
-        //         cd ${NGINX_PATH}
-        //         start nginx.exe
-        //         """
-        //     }
-        // }
     }
+
     post {
         always {
             echo 'Proceso de despliegue del backend completado.'
@@ -100,4 +108,47 @@ pipeline {
             echo 'El despliegue falló, revisa los logs para más detalles.'
         }
     }
+}
+
+def buildForEnvironment(String environment, String branch, String apiPort) {
+    dir("${environment}-src") {
+        git(url: params.GIT_URL, branch: branch)
+
+        dir(params.BACKEND_DIR) {
+            bat "dotnet restore"
+
+            bat """
+            dotnet publish ${params.PROJECT_NAME} -c Release --runtime win-x64 --self-contained -o publish
+            """
+
+            def config = """
+            {
+              "Urls": "http://localhost:${apiPort}",
+              "AllowedOrigins": "http://localhost:${params.FRONTEND_PORT}",
+              "ConnectionStrings": {
+                "DefaultConnection": "Server=localhost;Database=products;User Id=sa;Password=Password123!;TrustServerCertificate=True;Encrypt=False;"
+              }
+            }
+            """
+            writeFile file: "publish/appsettings.json", text: config
+        }
+    }
+}
+
+def deployToEnvironment(String environment, String apiPort, String nginxPort) {
+    def serviceName = "SolidProductsBackendService-${environment}"
+
+    powershell """
+        if (Get-Service -Name '${serviceName}' -ErrorAction SilentlyContinue) {
+            sc stop ${serviceName}
+            sc delete ${serviceName}
+        }
+    """
+
+    bat """
+    sc create ${serviceName} binPath="${WORKSPACE}\\${environment}-src\\${params.BACKEND_DIR}\\publish\\${params.PROJECT_NAME}.exe" start=auto
+    sc start ${serviceName}
+    """
+
+    echo "Backend desplegado en ${environment} -> API interna ${apiPort}, expuesto por Nginx en ${nginxPort}"
 }
