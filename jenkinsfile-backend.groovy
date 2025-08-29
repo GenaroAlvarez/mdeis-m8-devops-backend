@@ -19,9 +19,9 @@ pipeline {
         string(name: 'NGINX_PORT_DEVELOPMENT', defaultValue: '5051', description: 'Puerto expuesto en desarrollo')
         string(name: 'NGINX_PORT_TEST', defaultValue: '5052', description: 'Puerto expuesto en test')
 
-        string(name: 'FRONTEND_PORT_PROD', defaultValue: '8080', description: 'Puerto del frontend')
-        string(name: 'FRONTEND_PORT_DEVELOPMENT', defaultValue: '8081', description: 'Puerto del frontend')
-        string(name: 'FRONTEND_PORT_TEST', defaultValue: '8082', description: 'Puerto del frontend')
+        string(name: 'FRONTEND_PORT_PROD', defaultValue: '8080', description: 'Puerto del frontend production')
+        string(name: 'FRONTEND_PORT_DEVELOPMENT', defaultValue: '8081', description: 'Puerto del frontend development')
+        string(name: 'FRONTEND_PORT_TEST', defaultValue: '8082', description: 'Puerto del frontend test')
 
         booleanParam(name: 'DEPLOY_TEST', defaultValue: true, description: '¿Desplegar en ambiente de test?')
         booleanParam(name: 'DEPLOY_DEVELOPMENT', defaultValue: false, description: '¿Desplegar en ambiente de desarrollo?')
