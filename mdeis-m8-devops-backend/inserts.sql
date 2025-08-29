@@ -1,4 +1,6 @@
-use products;
+use products_prod; --PRODUCTION
+-- use products_dev; --DEVELOPMENT
+-- use products_test; --TEST
 
 INSERT INTO ClientGroups (Name, Code, Discount, CreatedAt, UpdatedAt, DeletedAt)
 VALUES ('Clientes Premium', 'PREM', 15.5, GETUTCDATE(), NULL, NULL);
