@@ -8,10 +8,17 @@ namespace SolidProducts.Controllers
     [ApiController]
     public class StatusController : ControllerBase
     {
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ClientResponseDto>>> GetStatus()
+        public readonly string Environment;
+
+        public StatusController(IConfiguration _configuration)
         {
-            return Ok(new { Environment = "DEV", Status = "OK" });
+            Environment = _configuration.GetValue<string>("Env") ?? "ENV";
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<ClientResponseDto>> GetStatus()
+        {
+            return Ok(new { Environment, Status = "OK" });
         }
     }
 }
