@@ -143,7 +143,8 @@ def buildForEnvironment(String environment, String branch, String apiPort, Strin
               "AllowedOrigins": "http://localhost:${frontendPort}",
               "ConnectionStrings": {
                 "DefaultConnection": "Server=localhost;Database=products;User Id=sa;Password=Password123!;TrustServerCertificate=True;Encrypt=False;"
-              }
+              },
+              "Env": "${environment}"
             }
             """
             writeFile file: "publish/appsettings.json", text: config
