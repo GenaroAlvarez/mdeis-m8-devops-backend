@@ -23,6 +23,10 @@ pipeline {
         string(name: 'FRONTEND_PORT_DEVELOPMENT', defaultValue: '8081', description: 'Puerto del frontend development')
         string(name: 'FRONTEND_PORT_TEST', defaultValue: '8082', description: 'Puerto del frontend test')
 
+        string(name: 'DB_NAME_PROD', defaultValue: 'products_prod', description: 'Base de datos para producción')
+        string(name: 'DB_NAME_DEVELOPMENT', defaultValue: 'products_dev', description: 'Base de datos para desarrollo')
+        string(name: 'DB_NAME_TEST', defaultValue: 'products_test', description: 'Base de datos para test')
+
         booleanParam(name: 'DEPLOY_TEST', defaultValue: true, description: '¿Desplegar en ambiente de test?')
         booleanParam(name: 'DEPLOY_DEVELOPMENT', defaultValue: false, description: '¿Desplegar en ambiente de desarrollo?')
         booleanParam(name: 'DEPLOY_PROD', defaultValue: false, description: '¿Desplegar en ambiente de producción?')
@@ -67,19 +71,19 @@ pipeline {
                 stage('Build for Test') {
                     when { expression { return params.DEPLOY_TEST } }
                     steps {
-                        buildForEnvironment('test', params.GIT_BRANCH_TEST, params.API_PORT_TEST, params.FRONTEND_PORT_TEST)
+                        buildForEnvironment('test', params.GIT_BRANCH_TEST, params.API_PORT_TEST, params.FRONTEND_PORT_TEST, params.DB_NAME_TEST)
                     }
                 }
                 stage('Build for Development') {
                     when { expression { return params.DEPLOY_DEVELOPMENT } }
                     steps {
-                        buildForEnvironment('development', params.GIT_BRANCH_DEVELOPMENT, params.API_PORT_DEVELOPMENT, params.FRONTEND_PORT_DEVELOPMENT)
+                        buildForEnvironment('development', params.GIT_BRANCH_DEVELOPMENT, params.API_PORT_DEVELOPMENT, params.FRONTEND_PORT_DEVELOPMENT, params.DB_NAME_TEST)
                     }
                 }
                 stage('Build for Production') {
                     when { expression { return params.DEPLOY_PROD } }
                     steps {
-                        buildForEnvironment('production', params.GIT_BRANCH_PROD, params.API_PORT_PROD, params.FRONTEND_PORT_PROD)
+                        buildForEnvironment('production', params.GIT_BRANCH_PROD, params.API_PORT_PROD, params.FRONTEND_PORT_PROD, params.DB_NAME_TEST)
                     }
                 }
             }
@@ -126,7 +130,7 @@ pipeline {
     }
 }
 
-def buildForEnvironment(String environment, String branch, String apiPort, String frontendPort) {
+def buildForEnvironment(String environment, String branch, String apiPort, String frontendPort, String dbName) {
     dir("${environment}-src") {
         git(url: params.GIT_URL, branch: branch)
 
@@ -142,7 +146,7 @@ def buildForEnvironment(String environment, String branch, String apiPort, Strin
               "Urls": "http://localhost:${apiPort}",
               "AllowedOrigins": "http://localhost:${frontendPort}",
               "ConnectionStrings": {
-                "DefaultConnection": "Server=localhost;Database=products;User Id=sa;Password=Password123!;TrustServerCertificate=True;Encrypt=False;"
+                "DefaultConnection": "Server=localhost;Database=${dbName};User Id=sa;Password=Password123!;TrustServerCertificate=True;Encrypt=False;"
               },
               "Env": "${environment}"
             }
