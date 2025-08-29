@@ -1,3 +1,4 @@
+using System.Reflection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
@@ -6,19 +7,20 @@ using SolidProducts.Interfaces;
 using SolidProducts.Repositories;
 using SolidProducts.Services;
 using SolidProducts.Validators;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "AllowFrontend",
+    options.AddPolicy(
+        name: "AllowFrontend",
         policy =>
         {
             policy
                 .WithOrigins(builder.Configuration.GetValue<String>("AllowedOrigins")!.Split(";"))
                 .AllowAnyHeader()
                 .AllowAnyMethod();
-        });
+        }
+    );
 });
 
 builder.Host.UseWindowsService(options =>
@@ -28,13 +30,16 @@ builder.Host.UseWindowsService(options =>
 
 // Add services to the container.
 builder.Services.AddDbContext<AppDbContext>(opts =>
-    opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
+
 // AutoMapper
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 // FluentValidation
-builder.Services.AddFluentValidationAutoValidation()
-                .AddValidatorsFromAssemblyContaining<ProductCreateDtoValidator>();
+builder
+    .Services.AddFluentValidationAutoValidation()
+    .AddValidatorsFromAssemblyContaining<ProductCreateDtoValidator>();
 
 // Dependency Injection
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -47,6 +52,7 @@ builder.Services.AddScoped<IInvoiceService, InvoiceService>();
 builder.Services.AddScoped<IDocumentTypeService, DocumentTypeService>();
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -59,6 +65,7 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
 }
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
