@@ -204,13 +204,13 @@ http://localhost:5000
 Para validar funcionamiento, ingresa a la siguiente URL:
 ```nginx
 # Development
-http://localhost:5001/api/v1/products
+http://localhost:5001/status
 
 # Test
-http://localhost:5002/api/v1/products
+http://localhost:5002/status
 
 # Production
-http://localhost:5000/api/v1/products
+http://localhost:5000/status
 ```
 
 #### 8. Ejecuta el script de datos (solo la primera vez)
