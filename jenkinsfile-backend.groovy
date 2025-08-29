@@ -19,9 +19,9 @@ pipeline {
         string(name: 'NGINX_PORT_DEVELOPMENT', defaultValue: '5051', description: 'Puerto expuesto en desarrollo')
         string(name: 'NGINX_PORT_TEST', defaultValue: '5052', description: 'Puerto expuesto en test')
 
-        string(name: 'FRONTEND_PORT', defaultValue: '3000', description: 'Puerto del frontend')
-
-        string(name: 'NGINX_PATH', defaultValue: 'C:\\tools\\nginx', description: 'Ruta de instalación de Nginx')
+        string(name: 'FRONTEND_PORT_PROD', defaultValue: '8080', description: 'Puerto del frontend')
+        string(name: 'FRONTEND_PORT_DEVELOPMENT', defaultValue: '8081', description: 'Puerto del frontend')
+        string(name: 'FRONTEND_PORT_TEST', defaultValue: '8082', description: 'Puerto del frontend')
 
         booleanParam(name: 'DEPLOY_TEST', defaultValue: true, description: '¿Desplegar en ambiente de test?')
         booleanParam(name: 'DEPLOY_DEVELOPMENT', defaultValue: false, description: '¿Desplegar en ambiente de desarrollo?')
@@ -46,24 +46,40 @@ pipeline {
             }
         }
 
+        stage('Cleanup Previous Services') {
+            steps {
+                script {
+                    if (params.DEPLOY_TEST) {
+                        stopServiceIfExists('test')
+                    }
+                    if (params.DEPLOY_DEVELOPMENT) {
+                        stopServiceIfExists('development')
+                    }
+                    if (params.DEPLOY_PROD) {
+                        stopServiceIfExists('production')
+                    }
+                }
+            }
+        }
+
         stage('Build for Environments') {
             parallel {
                 stage('Build for Test') {
                     when { expression { return params.DEPLOY_TEST } }
                     steps {
-                        buildForEnvironment('test', params.GIT_BRANCH_TEST, params.API_PORT_TEST)
+                        buildForEnvironment('test', params.GIT_BRANCH_TEST, params.API_PORT_TEST, params.FRONTEND_PORT_TEST)
                     }
                 }
                 stage('Build for Development') {
                     when { expression { return params.DEPLOY_DEVELOPMENT } }
                     steps {
-                        buildForEnvironment('development', params.GIT_BRANCH_DEVELOPMENT, params.API_PORT_DEVELOPMENT)
+                        buildForEnvironment('development', params.GIT_BRANCH_DEVELOPMENT, params.API_PORT_DEVELOPMENT, params.FRONTEND_PORT_DEVELOPMENT)
                     }
                 }
                 stage('Build for Production') {
                     when { expression { return params.DEPLOY_PROD } }
                     steps {
-                        buildForEnvironment('production', params.GIT_BRANCH_PROD, params.API_PORT_PROD)
+                        buildForEnvironment('production', params.GIT_BRANCH_PROD, params.API_PORT_PROD, params.FRONTEND_PORT_PROD)
                     }
                 }
             }
@@ -110,7 +126,7 @@ pipeline {
     }
 }
 
-def buildForEnvironment(String environment, String branch, String apiPort) {
+def buildForEnvironment(String environment, String branch, String apiPort, String frontendPort) {
     dir("${environment}-src") {
         git(url: params.GIT_URL, branch: branch)
 
@@ -124,7 +140,7 @@ def buildForEnvironment(String environment, String branch, String apiPort) {
             def config = """
             {
               "Urls": "http://localhost:${apiPort}",
-              "AllowedOrigins": "http://localhost:${params.FRONTEND_PORT}",
+              "AllowedOrigins": "http://localhost:${frontendPort}",
               "ConnectionStrings": {
                 "DefaultConnection": "Server=localhost;Database=products;User Id=sa;Password=Password123!;TrustServerCertificate=True;Encrypt=False;"
               }
@@ -151,4 +167,14 @@ def deployToEnvironment(String environment, String apiPort, String nginxPort) {
     """
 
     echo "Backend desplegado en ${environment} -> API interna ${apiPort}, expuesto por Nginx en ${nginxPort}"
+}
+
+def stopServiceIfExists(String environment) {
+    def serviceName = "SolidProductsBackendService-${environment}"
+    powershell """
+        if (Get-Service -Name '${serviceName}' -ErrorAction SilentlyContinue) {
+            Stop-Service -Name '${serviceName}' -Force
+            Write-Host "Servicio ${serviceName} detenido para limpieza"
+        }
+    """
 }
