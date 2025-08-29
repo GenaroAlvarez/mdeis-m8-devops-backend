@@ -77,13 +77,13 @@ pipeline {
                 stage('Build for Development') {
                     when { expression { return params.DEPLOY_DEVELOPMENT } }
                     steps {
-                        buildForEnvironment('development', params.GIT_BRANCH_DEVELOPMENT, params.API_PORT_DEVELOPMENT, params.FRONTEND_PORT_DEVELOPMENT, params.DB_NAME_TEST)
+                        buildForEnvironment('development', params.GIT_BRANCH_DEVELOPMENT, params.API_PORT_DEVELOPMENT, params.FRONTEND_PORT_DEVELOPMENT, params.DB_NAME_DEVELOPMENT)
                     }
                 }
                 stage('Build for Production') {
                     when { expression { return params.DEPLOY_PROD } }
                     steps {
-                        buildForEnvironment('production', params.GIT_BRANCH_PROD, params.API_PORT_PROD, params.FRONTEND_PORT_PROD, params.DB_NAME_TEST)
+                        buildForEnvironment('production', params.GIT_BRANCH_PROD, params.API_PORT_PROD, params.FRONTEND_PORT_PROD, params.DB_NAME_PROD)
                     }
                 }
             }
