@@ -11,7 +11,7 @@ namespace SolidProducts.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ClientResponseDto>>> GetStatus()
         {
-            return Ok(new { Environment = "PROD", Status = "OK" });
+            return Ok(new { Environment = "DEV", Status = "OK" });
         }
     }
 }
