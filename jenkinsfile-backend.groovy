@@ -33,22 +33,6 @@ pipeline {
     }
 
     stages {
-        stage('Stop nginx process') {
-            steps {
-                powershell '''
-                    if (Get-Service -Name "nginx" -ErrorAction SilentlyContinue) {
-                        if ((Get-Service -Name "nginx").Status -eq "Running") {
-                            net stop nginx
-                            Write-Host "nginx detenido"
-                        } else {
-                            Write-Host "nginx ya estaba detenido"
-                        }
-                    } else {
-                        Write-Host "nginx no está registrado como servicio"
-                    }
-                '''
-            }
-        }
 
         stage('Cleanup Previous Services') {
             steps {
@@ -86,6 +70,23 @@ pipeline {
                         buildForEnvironment('production', params.GIT_BRANCH_PROD, params.API_PORT_PROD, params.FRONTEND_PORT_PROD, params.DB_NAME_PROD)
                     }
                 }
+            }
+        }
+
+        stage('Stop nginx process') {
+            steps {
+                powershell '''
+                    if (Get-Service -Name "nginx" -ErrorAction SilentlyContinue) {
+                        if ((Get-Service -Name "nginx").Status -eq "Running") {
+                            net stop nginx
+                            Write-Host "nginx detenido"
+                        } else {
+                            Write-Host "nginx ya estaba detenido"
+                        }
+                    } else {
+                        Write-Host "nginx no está registrado como servicio"
+                    }
+                '''
             }
         }
 
