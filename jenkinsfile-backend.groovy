@@ -27,9 +27,13 @@ pipeline {
         string(name: 'DB_NAME_DEVELOPMENT', defaultValue: 'products_dev', description: 'Base de datos para desarrollo')
         string(name: 'DB_NAME_TEST', defaultValue: 'products_test', description: 'Base de datos para test')
 
+        string(name: 'JENKIN_FRONTEND_NAME', defaultValue: '01-mdeis-m8-devops-frontend', description: 'Nombre del archivo jenkin file del frontend')
+
         booleanParam(name: 'DEPLOY_TEST', defaultValue: true, description: '¿Desplegar en ambiente de test?')
         booleanParam(name: 'DEPLOY_DEVELOPMENT', defaultValue: false, description: '¿Desplegar en ambiente de desarrollo?')
         booleanParam(name: 'DEPLOY_PROD', defaultValue: false, description: '¿Desplegar en ambiente de producción?')
+
+        booleanParam(name: 'DEPLOY_FRONTEND', defaultValue: false, description: '¿Desplegar Frontend?')
     }
 
     stages {
@@ -122,6 +126,14 @@ pipeline {
     }
 
     post {
+        success {
+            script {
+                if (params.DEPLOY_FRONTEND.toBoolean()) {
+                    echo 'Disparando el pipeline del frontend.'
+                    build(job: params.JENKIN_FRONTEND_NAME, wait: false)
+                }
+            }
+        }
         always {
             echo 'Proceso de despliegue del backend completado.'
         }
